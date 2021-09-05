@@ -1,12 +1,12 @@
 #include "push_swap.h"
 
-static int	check_duplicates_2(char *s, char c)
+static int	check_duplicates_2(char *s, char c, int i)
 {
-	while (*s)
+	while (s[i])
 	{
-		if (*s == c)
+		if (s[i] == c)
 			return (0);
-		s++;
+		i++;
 	}
 	return (1);
 }
@@ -23,13 +23,14 @@ static int	check_duplicates(char **array)
 		s = ft_strjoin(s, array[i]);
 		i++;
 	}
+	s[i] = '\0';
 	printf ("%s\n", s);
 	if (!s)
 		return (0);
 	i = 0;
 	while (s[i])
 	{
-		if (!check_duplicates_2(s + i, s[i]))
+		if (!check_duplicates_2(s, s[i], i + 1))
 			return (0);
 		i++;
 	}
