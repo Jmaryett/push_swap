@@ -2,31 +2,26 @@
 
 void	adding_digits_to_stack(char **argv, t_stacks *stack)
 {
-	int	i;
-	int	j;
-	int	znak;
-	int	n;
-	int	index;
+	stack->ints.i = 0;
+	stack->ints.znak = 1;
+	stack->ints.index = 0;
+	stack->ints.n = 0;
 
-	i = 0;
-	j = 0;
-	znak = 1;
-	index = 0;
-	while (argv[++i])
+	while (argv[++stack->ints.i])
 	{
-		while (argv[i][j] == ' ')
-			j++;
-		if (argv[i][j] >= '0' && argv[i][j] <= '9')
+		stack->ints.j = 0;
+		while (argv[stack->ints.i][stack->ints.j] == ' ')
+			stack->ints.j++;
+		while (argv[stack->ints.i][stack->ints.j] && (argv[stack->ints.i][stack->ints.j] >= '0' && argv[stack->ints.i][stack->ints.j] <= '9'))
 		{
-			if (argv[i][j - 1] == '-')
-				znak = -1;
-			while (argv[i][j] != '-' || argv[i][j] != ' ')
-			{
-				n = znak * (n * 10 + (argv[i][j] - '0'));
-				stack->stack_a[index] = n;
-				index++;
-				j++;
-			}
+			if (argv[stack->ints.i][stack->ints.j - 1] == '-')
+				stack->ints.znak = -1;
+			stack->ints.n = stack->ints.znak * (stack->ints.n * 10 + (argv[stack->ints.i][stack->ints.j] - '0'));
+			stack->stack_a[stack->ints.index] = stack->ints.n;
+			stack->ints.j++;
 		}
-	}
+			stack->ints.znak = 1;
+			stack->ints.n = 0;
+			stack->ints.index++;
+		}
 }

@@ -1,4 +1,4 @@
-LIBFT_C = ./libft_42_school/*.c
+LIBFT_C = ./libft/*.c
 
 LIBA = libft.a
 
@@ -9,6 +9,7 @@ HEADER = push_swap.h
 SRCS	= main.c \
 		1_check_input.c \
 		2_adding_digits_to_stack.c \
+		sort_small_stack/3_algorithm_for_3.c \
 		error_case.c
 		
 OBJS	= ${SRCS:.c=.o}
@@ -32,10 +33,10 @@ all: ${NAME}
 compile_libft: ${LIBFT_A}
 
 ${LIBA}: ${LIBFT_C}
-			cd ./libft_42_school; \
+			cd ./libft; \
 			make; \
 			mv ${LIBA} ../; \
-			cd ./libft_42_school; \
+			cd ./libft; \
 			make clean
 	
 #${NAME}: ${OBJS} ${HEADER}

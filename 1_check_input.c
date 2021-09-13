@@ -1,38 +1,58 @@
 #include "push_swap.h"
 
-static int	check_duplicates_2(char *s, char c, int i)
+static int	check_min_max_int(char **array)
 {
-	while (s[i])
+	long	n;
+	int	i;
+
+	n = 0;
+	i = 0;
+	while (array[++i])
 	{
-		if (s[i] == c)
+		n = ft_atoi(array[i]);
+		if (n > 2147483647 || n < -2147483648)
 			return (0);
-		i++;
+		n = 0;
 	}
 	return (1);
 }
 
+static int	compare_str(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	if (ft_strlen(s1) != ft_strlen(s2))
+		return (1);
+	else if (ft_strlen(s1) == ft_strlen(s2))
+	{
+		while (s2[i])
+		{
+			if (!ft_strchr(s2, s1[i]))
+				return (1);
+			i++;
+		}
+	}
+	return (0);
+}
+
 static int	check_duplicates(char **array)
 {
-	char	*s;
-	int		i;
+	int	i;
+	int	prev;
 
 	i = 1;
-	s = NULL;
+	prev = 2;
 	while (array[i])
 	{
-		s = ft_strjoin(s, array[i]);
+		while (array[prev])
+		{
+			if (!compare_str(array[i], array[prev]))
+				return (0);
+			prev++;
+		}
 		i++;
-	}
-	s[i] = '\0';
-	printf ("%s\n", s);
-	if (!s)
-		return (0);
-	i = 0;
-	while (s[i])
-	{
-		if (!check_duplicates_2(s, s[i], i + 1))
-			return (0);
-		i++;
+		prev = i + 1;
 	}
 	return (1);
 }
@@ -56,6 +76,8 @@ void	check_input(char **array)
 		i++;
 	}
 	if (!check_duplicates(array))
-		error_case("Error\nFound duplicates.");
+		error_case("Error\nFound duplicates.\n");
+	else if (!check_min_max_int(array))
+		error_case("Error\nValue is over MIN or MAX int.\n");
 	return ;
 }

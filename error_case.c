@@ -2,6 +2,12 @@
 
 int	error_case(char *s)
 {
-	printf("%s\n", s);
+	ft_putstr_fd(s, 1);
+	exit (0);
+}
+
+int	printing_instructions(char *s)
+{
+	ft_putstr_fd(s, 1);
 	exit (0);
 }
