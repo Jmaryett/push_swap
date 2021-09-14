@@ -1,9 +1,9 @@
 #include "push_swap.h"
 
-static int	check_min_max_int(char **array)
+static int check_min_max_int(char **array)
 {
-	long	n;
-	int	i;
+	long n;
+	int i;
 
 	n = 0;
 	i = 0;
@@ -17,29 +17,22 @@ static int	check_min_max_int(char **array)
 	return (1);
 }
 
-static int	compare_str(char *s1, char *s2)
+static int check_dupl_atoi(char *s1, char *s2)
 {
-	int	i;
+	int n;
+	int n2;
 
-	i = 0;
-	if (ft_strlen(s1) != ft_strlen(s2))
-		return (1);
-	else if (ft_strlen(s1) == ft_strlen(s2))
-	{
-		while (s2[i])
-		{
-			if (!ft_strchr(s2, s1[i]))
-				return (1);
-			i++;
-		}
-	}
-	return (0);
+	n = ft_atoi(s1);
+	n2 = ft_atoi(s2);
+	if (n == n2)
+		return (0);
+	return (1);
 }
 
-static int	check_duplicates(char **array)
+static int check_duplicates(char **array)
 {
-	int	i;
-	int	prev;
+	int i;
+	int prev;
 
 	i = 1;
 	prev = 2;
@@ -47,7 +40,7 @@ static int	check_duplicates(char **array)
 	{
 		while (array[prev])
 		{
-			if (!compare_str(array[i], array[prev]))
+			if (!check_dupl_atoi(array[i], array[prev]))
 				return (0);
 			prev++;
 		}
@@ -57,24 +50,42 @@ static int	check_duplicates(char **array)
 	return (1);
 }
 
-void	check_input(char **array)
+static void check_char_valid(char **array, int i, int c)
 {
-	int	i;
-	int	j;
+	int j;
 
-	i = 1;
-	j = 0;
 	while (array[i])
 	{
+		j = 0;
 		while (array[i][j])
 		{
-			if (array[i][j] < '0' && array[i][j] > '9' &&
-				array[i][j] != '-')
-				error_case("Invalid arguments.");
+			while (array[i][j] == ' ')
+				j++;
+			while (array[i][j] == '-')
+			{
+				j++;
+				c++;
+			}
+			if (((array[i][j] < '0' || array[i][j] > '9') &&
+				 array[i][j] != '-') ||
+				c > 1 || array[i][j + 1] == ' ')
+				error_case("Error\nInvalid arguments.\n");
 			j++;
 		}
+		c = 0;
 		i++;
 	}
+	return;
+}
+
+void check_input(char **array)
+{
+	int i;
+	int count;
+
+	i = 1;
+	count = 0;
+	check_char_valid(array, i, count);
 	if (!check_duplicates(array))
 		error_case("Error\nFound duplicates.\n");
 	else if (!check_min_max_int(array))

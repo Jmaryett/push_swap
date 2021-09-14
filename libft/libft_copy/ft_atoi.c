@@ -13,7 +13,7 @@ static	unsigned long	attoi(char *str)
 	return (n);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int				count;
 	unsigned long	n;

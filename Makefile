@@ -1,4 +1,4 @@
-LIBFT_C = ./libft/*.c
+LIBFT_C = ./libft/libft_copy/*.c
 
 LIBA = libft.a
 
@@ -8,11 +8,14 @@ HEADER = push_swap.h
 
 SRCS	= main.c \
 		1_check_input.c \
-		2_adding_digits_to_stack.c \
-		sort_small_stack/3_algorithm_for_3.c \
 		error_case.c
 		
+
+SRCS_2	= ./libft/libft_copy/ft_atoi.c
+
 OBJS	= ${SRCS:.c=.o}
+
+OBJS_2	= ${SRCS_2:.c=.o}
 
 RM	= rm -f
 
@@ -33,17 +36,17 @@ all: ${NAME}
 compile_libft: ${LIBFT_A}
 
 ${LIBA}: ${LIBFT_C}
-			cd ./libft; \
+			cd ./libft/libft_copy; \
 			make; \
-			mv ${LIBA} ../; \
-			cd ./libft; \
+			mv ${LIBA} ../../; \
+			cd ./libft/libft_copy; \
 			make clean
 	
 #${NAME}: ${OBJS} ${HEADER}
 #		 ${CC} -g -o ${NAME} ${OBJS} ${LIBA}
 
-${NAME}: ${LIBA} ${HEADER} ${OBJS} 
-		${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${LIBA}
+${NAME}: ${LIBA} ${HEADER} ${OBJS} ${OBJS_2}
+		${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${OBJS_2} ${LIBA} 
 
 clean:
 		${RM} ${OBJS}
