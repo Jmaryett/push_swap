@@ -1,4 +1,4 @@
-LIBFT_C = ./libft/libft_copy/*.c
+LIBFT_C = ./libft/*.c
 
 LIBA = libft.a
 
@@ -6,18 +6,24 @@ NAME = push_swap
 
 HEADER = push_swap.h
 
+HEADER_LIBA = ./libft/libft.h
+
 SRCS	= main.c \
 		1_check_input.c \
+		2_filling_stack_a.c \
+		3_check_if_stack_is_sorted.c \
+		4_list_size.c \
+		5_indexation.c \
 		error_case.c
 		
 
-SRCS_2	= ./libft/libft_copy/ft_atoi.c
+SRCS_2	= ./libft/ft_atoi.c
 
 OBJS	= ${SRCS:.c=.o}
 
 OBJS_2	= ${SRCS_2:.c=.o}
 
-RM	= rm -f
+RM	= rm -rf
 
 AR 	= ar rc
 
@@ -36,10 +42,10 @@ all: ${NAME}
 compile_libft: ${LIBFT_A}
 
 ${LIBA}: ${LIBFT_C}
-			cd ./libft/libft_copy; \
+			cd ./libft; \
 			make; \
-			mv ${LIBA} ../../; \
-			cd ./libft/libft_copy; \
+			mv ${LIBA} ../; \
+			cd ./libft; \
 			make clean
 	
 #${NAME}: ${OBJS} ${HEADER}
@@ -49,10 +55,10 @@ ${NAME}: ${LIBA} ${HEADER} ${OBJS} ${OBJS_2}
 		${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${OBJS_2} ${LIBA} 
 
 clean:
-		${RM} ${OBJS}
+		${RM} ${OBJS} ${OBJS_2}
 
 fclean:	clean
-		${RM} ${NAME} a.out
+		${RM} ${NAME} a.out ${LIBA}
 
 re:		fclean all
 
