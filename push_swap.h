@@ -5,19 +5,20 @@
 #include "./libft/libft.h"
 
 #ifndef INT_MAX
-# define INT_MAX 2147483646
+# define INT_MAX 2147483647
 #endif
 
 
 #ifndef INT_MIN
-# define INT_MIN -2147483647
+# define INT_MIN -2147483648
 #endif
 
 typedef struct s_stack_a
 {
 	int	number;
 	int	index;
-	int	flag;
+	int	markup_head;
+	char	*keep_in_stack_a;
 	struct s_stack_a *next;
 }				t_stack_a;
 
@@ -31,5 +32,6 @@ void	indexation(t_stack_a **begin);
 int	lstsize(t_stack_a *begin);
 void	free_memory_lst(t_stack_a *new);
 
+void	markups(t_stack_a **begin);
 
 #endif

@@ -14,6 +14,7 @@ SRCS	= main.c \
 		3_check_if_stack_is_sorted.c \
 		4_list_size.c \
 		5_indexation.c \
+		6_markup.c \
 		error_case.c
 		
 
