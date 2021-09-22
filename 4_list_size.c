@@ -1,9 +1,9 @@
 #include "push_swap.h"
 
-int	lstsize(t_stack_a *begin)
+int	lstsize(t_stack *begin)
 {
 	int	len;
-	t_stack_a	*tmp;
+	t_stack	*tmp;
 
 	if (!begin)
 		return (0);

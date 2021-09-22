@@ -1,8 +1,8 @@
 #include "push_swap.h"
 
-static void init_index(t_stack_a **begin)
+static void init_index(t_stack **begin)
 {
-	t_stack_a *tmp;
+	t_stack *tmp;
 
 	tmp = *begin;
 	while (tmp)
@@ -12,12 +12,12 @@ static void init_index(t_stack_a **begin)
 	}
 }
 
-static void giving_index(t_stack_a **begin, int len)
+static void giving_index(t_stack **begin, int len)
 {
 	int i;
 	int min;
-	t_stack_a *begin_tmp;
-	t_stack_a *tmp;
+	t_stack *begin_tmp;
+	t_stack *tmp;
 
 	min = INT_MAX;
 	i = 0;
@@ -40,28 +40,7 @@ static void giving_index(t_stack_a **begin, int len)
 	}
 }
 
-/* static void	giving_index(t_stack_a **begin, int len)
-{
-	int			max;
-	int			min;
-	t_stack_a	*begin_tmp;
-
-	begin_tmp = *begin;
-	min = INT_MAX;
-	max = INT_MIN;
-	while (begin_tmp)
-	{
-		if (begin_tmp->number > max)
-			max = begin_tmp->number;
-		if (begin_tmp->number < min)
-			min = begin_tmp->number;
-		begin_tmp = begin_tmp->next;
-	}
-	printf("min number = %d, largest number = %d, len = %d\n", min, max, len);
-}
- */
-
-void indexation(t_stack_a **begin)
+void indexation(t_stack **begin)
 {
 	int len;
 

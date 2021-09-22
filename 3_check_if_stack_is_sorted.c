@@ -1,13 +1,11 @@
 #include "push_swap.h"
 
-void	check_if_stack_is_sorted(t_stack_a *begin)
+void	check_if_stack_is_sorted(t_stack **begin)
 {
-	t_stack_a	*prev;
-	t_stack_a	*nex;
+	t_stack	*prev;
+	t_stack	*nex;
 
-	prev = NULL;
-	nex = NULL;
-	prev = begin;
+	prev = *begin;
 	nex = prev->next;
 	while (nex)
 	{
