@@ -28,7 +28,7 @@ typedef struct s_stack
 } t_stack;
 
 t_stack *swap_a(t_stack **stack_a, t_count *count);
-void rotate_a(t_stack **stack_a/* , t_count *count */);
+void rotate_a(t_stack **stack_a , t_count *count);
 t_stack *push_b(t_stack **stack_a, t_stack *b);
 
 int error_case(char *s);
