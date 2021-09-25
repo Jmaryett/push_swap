@@ -17,17 +17,17 @@
 	return (pre);
 } */
 
-void rotate_a(t_stack **stack_a)
+void rotate(t_stack **stack)
 {
  	t_stack *tmp;
 	t_stack *last;
 	//t_stack	*pre_last;
 
-	if (!stack_a || !*stack_a || !(*stack_a)->next)
+	if (!stack || !*stack || !(*stack)->next)
 		return;
-	tmp = *stack_a;
-	last = *stack_a;
-	*stack_a = (*stack_a)->next;
+	tmp = *stack;
+	last = *stack;
+	*stack = (*stack)->next;
 	while (last && last->next)
 		last = last->next;
 	last->next = tmp;

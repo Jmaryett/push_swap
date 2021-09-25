@@ -1,5 +1,4 @@
 #include "push_swap.h"
-#include "push_swap.h"
 
 void init_m_h(t_stack **stack)
 {

@@ -26,12 +26,13 @@ typedef struct s_stack
 	int index;
 	int markup_head;
 	int keep;
+	int	moves;
 	struct s_stack *next;
 } t_stack;
 
-void	swap_a(t_stack **stack_a);
-void	rotate_a(t_stack **stack_a);
-t_stack	*push_b(t_stack **stack_a, t_stack **stack_b);
+void swap(t_stack **stack);
+void rotate(t_stack **stack);
+t_stack	*push(t_stack **stack_1, t_stack **stack_2);
 
 int error_case(char *s);
 void check_input(char **array);

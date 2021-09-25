@@ -14,12 +14,12 @@ SRCS	= main.c \
 		3_check_if_stack_is_sorted.c \
 		4_list_size.c \
 		5_indexation.c \
-		6_markups.c \
-		7_init_keep_in_a.c \
+		6_markups_greater.c \
+		7_init_keep_in_a_greater.c \
 		8_from_a_to_b.c \
-		./commands/push_b.c \
-		./commands/rotate_a.c \
-		./commands/swap_a.c \
+		./commands/push.c \
+		./commands/rotate.c \
+		./commands/swap.c \
 		error_case.c
 		
 
