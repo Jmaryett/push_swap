@@ -1,11 +1,52 @@
 #include "../push_swap.h"
 
-void rotate_a(t_stack **stack_a , t_count *count)
+/* static t_stack	*find_pre_last(t_stack **a)
 {
-	t_stack *current;
+	t_stack	*pre;
+	int	len;
+	int	i;
+
+	len = lstsize(*a);
+	pre = *a;
+	i = 0;
+	while (i < len - 2 && pre && pre->next)
+	{
+		pre = pre->next;
+		i++;
+	}
+	return (pre);
+} */
+
+void rotate_a(t_stack **stack_a)
+{
+ 	t_stack *tmp;
+	t_stack *last;
+	//t_stack	*pre_last;
+
+	if (!stack_a || !*stack_a || !(*stack_a)->next)
+		return;
+	tmp = *stack_a;
+	last = *stack_a;
+	*stack_a = (*stack_a)->next;
+	while (last && last->next)
+		last = last->next;
+	last->next = tmp;
+	tmp->next = NULL;
+
+/*	last = (*stack_a)->next;
+	while (last && last->next)
+		last = last->next;
+	pre_last = find_pre_last(stack_a);
+	tmp = *stack_a;
+	*stack_a = last;
+	(*stack_a)->next = tmp->next;
+	last = tmp;
+	last->next = NULL;
+	pre_last->next = last; */
+
+	/* 	t_stack *current;
 	t_stack *next_node;
 	t_stack	*prev;
-	t_stack	*m_h;
 
 	prev = NULL;
 	next_node = NULL;
@@ -17,10 +58,5 @@ void rotate_a(t_stack **stack_a , t_count *count)
 		prev = current;
 		current = next_node;
 	}
-	*stack_a = prev;
-	m_h = *stack_a;
-	init_markup_head(stack_a);
-	while (m_h->markup_head != 1)
-		m_h = m_h->next;
-	init_keep_in_a(stack_a, m_h, count);
+	*stack_a = prev; */
 }

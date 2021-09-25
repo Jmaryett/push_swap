@@ -1,78 +1,68 @@
 #include "push_swap.h"
 
-t_stack *swap_a(t_stack **stack_a, t_count *count)
+static int check_if_sa_needed(t_stack **stack_a, t_count *count)
 {
-	t_stack *next_a;
-	t_stack *m_h;
-
-	next_a = (*stack_a)->next;
-	(*stack_a)->next = next_a->next;
-	next_a->next = *stack_a;
-	*stack_a = next_a;
-	m_h = *stack_a;
-	init_markup_head(stack_a);
-	while (m_h->markup_head != 1)
-		m_h = m_h->next;
-	init_keep_in_a(stack_a, m_h, count); //check how many nbrs will stay in stack after sa
-	return (*stack_a);
-}
-
-int check_if_sa_needed(t_stack *stack_a, t_count *count)
-{
-	t_stack	*m_h; //markup_head of tmp after sa
 	int prev_count;
 
-	prev_count = count->count_keep;
-	m_h = stack_a;
-	stack_a = swap_a(&stack_a, count);
-	init_markup_head(&stack_a);
-	if (prev_count > count->count_keep)
+	prev_count = count->count_false;
+	swap_a(stack_a);
+	markups(stack_a, count);
+	if (prev_count > count->count_false)
 	{
-		write(1, "sa", 2);
-		return (1);
+		swap_a(stack_a);
+		markups(stack_a, count);
+		return (1); //we need to do sa (we reversed srack a back to reverse it in general func)
 	}
 	else
 	{
-		count->count_keep = 0;
-		stack_a = swap_a(&stack_a, count); //do sa
-		init_markup_head(&stack_a);//find new mark head
-		m_h = stack_a;
-		while (m_h->markup_head != 1)
-		m_h = m_h->next;
-		init_keep_in_a(&stack_a, m_h, count); //renew markup
-		return (0);
+		swap_a(stack_a);
+		markups(stack_a, count);
+		return (0); //we don't need to do sa
 	}
+}
+
+static int	do_count_false(t_stack *head)
+{
+	int	count_false;
+
+	count_false = 0;
+	while (head)
+	{
+		if (head->keep == 0)
+			count_false++;
+		head = head->next;
+	}
+	return(count_false);
 }
 
 t_stack *from_a_to_b(t_stack **stack_a, t_stack **stack_b, t_count *count)
 {
-	t_stack	*head;
+	//t_stack	*head;
 	int	count_false;
 
-	count_false = 0;
-	while (1)
+	//head = *stack_a;
+	count_false = do_count_false(*stack_a);
+	//head = *stack_a;
+	while (count_false != 0)
 	{
-		if (check_if_sa_needed(*stack_a, count))
-			continue ;
+		if (check_if_sa_needed(stack_a, count))
+		{
+			swap_a(stack_a);
+			markups(stack_a, count);
+			write(1, "sa\n", 3);
+		}
 		else if ((*stack_a)->keep == 0)
 		{
-			*stack_b = push_b(stack_a, *stack_b);
-			write (1, "pb\n", 3);
+			*stack_b = push_b(stack_a, stack_b);//top of a goes to top of b
+			write(1, "pb\n", 3);
 		}
 		else
 		{
-			rotate_a(stack_a, count);
-			write (1, "ra\n", 3);
+			rotate_a(stack_a); //top goes to bot
+			write(1, "ra\n", 3);
 		}
-		head = *stack_a;
-		while (head)
-		{
-			if (head->keep == 0)
-				count_false++;
-			head = head->next;
-		}
-		if (count_false == 0)
-			break ;
+		count_false = do_count_false((*stack_a));
 	}
+	
 	return (*stack_b);
 }

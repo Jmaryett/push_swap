@@ -5,16 +5,18 @@ static void	starting_to_push(t_stack **begin)
 	t_stack	*stack_b;
 	t_count	count;
 
-	count.count_keep = 0;
+	stack_b = NULL;
+	count.count_false = 0;
 	check_if_stack_is_sorted(begin);
 	printf ("all good\n");
 	indexation(begin);
-	stack_b = differ_stacks(begin, &count);
-	while (stack_b)
+	markups(begin, &count); //first find best mark_head
+	stack_b = from_a_to_b(begin, &stack_b, &count);
+/* 	while (stack_b)
 	{
 		printf("number is %d\n", stack_b->number);
 		stack_b = stack_b->next;
-	}
+	} */
 }
 
 int	main(int argc, char **argv)
