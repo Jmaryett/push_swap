@@ -8,14 +8,14 @@ static void init_mv_in_b(t_stack **st)
 
 	i = 1;
 	len = lstsize(*st);
-	tmp = (*st)->next;
+	tmp = *st;
 	if (len == 2)
 	{
 		tmp->moves = 1;
 		tmp->next->moves = 2;
 		return;
 	}
-	while (i < len/2)
+	while (i <= (len/2)+1)
 	{
 		tmp->moves += i;
 		tmp = tmp->next;
