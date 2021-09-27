@@ -35,38 +35,45 @@ static int	do_count_false(t_stack *head)
 	return(count_false);
 }
 
-t_stack *from_a_to_b(t_stack **stack_a, t_stack **stack_b, t_count *count)
+t_stack *from_a_to_b(t_stack **stack_a, t_stack **stack_b, t_count *c, t_moves *mv)
 {
-	//t_stack	*head;
 	int	count_false;
 
-	//head = *stack_a;
 	count_false = do_count_false(*stack_a);
-	//head = *stack_a;
 	while (count_false != 0)
 	{
-		if (check_if_sa_needed(stack_a, count))
+		if (check_if_sa_needed(stack_a, c))
 		{
 			swap(stack_a);
-			markups(stack_a, count);
+			markups(stack_a, c);
 			write(1, "sa\n", 3);
+			mv->count_moves++;
 		}
 		else if ((*stack_a)->keep == 0)
 		{
 			*stack_b = push(stack_a, stack_b);//top of a goes to top of b
 			write(1, "pb\n", 3);
+			mv->count_moves++;
 		}
 		else
 		{
 			rotate(stack_a); //top goes to bot
 			write(1, "ra\n", 3);
+			mv->count_moves++;
 		}
 		count_false = do_count_false((*stack_a));
 	}
-	while (*stack_a)
+	printf("All good after from_a_to_b\n");
+/*  	while (*stack_a)
 	{
 		printf("index = %d\n", (*stack_a)->index);
 		*stack_a = (*stack_a)->next;
 	}
+	printf("moves after stacking = %d\n", mv->count_moves);
+	while (*stack_b)
+	{
+		printf("index of b = %d\n", (*stack_b)->index);
+		*stack_b = (*stack_b)->next;
+	} */
 	return (*stack_b);
 }
