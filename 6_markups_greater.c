@@ -2,7 +2,7 @@
 
 void init_m_h(t_stack **stack)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = *stack;
 	while (tmp)
@@ -14,7 +14,7 @@ void init_m_h(t_stack **stack)
 
 void init_keep_true_false(t_stack **stack_a)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = *stack_a;
 	while (tmp)
@@ -72,6 +72,8 @@ void markups(t_stack **stack_a, t_count *c)
 {
 	t_stack *m_h;
 
+	if (!stack_a || !*stack_a)
+		return ;
 	m_h = *stack_a;
 	init_m_h(stack_a);
 	finding_best_m_h(stack_a, c);
@@ -80,6 +82,5 @@ void markups(t_stack **stack_a, t_count *c)
 		m_h = m_h->next;
 	m_h->markup_head = 1;
 	init_keep_true_false(stack_a);
-	//printf ("m_h is %d\n", m_h->number);
 	init_keep_in_a(stack_a, m_h, c);
 }

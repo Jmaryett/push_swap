@@ -44,6 +44,8 @@ void indexation(t_stack **begin)
 {
 	int len;
 
+	if (!begin || !*begin)
+		return ;
 	len = lstsize(*begin);
 	giving_index(begin, len);
 }

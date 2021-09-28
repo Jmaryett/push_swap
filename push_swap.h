@@ -12,6 +12,7 @@
 #define INT_MIN -2147483648
 #endif
 
+
 //count elems that should be in stack_b
 typedef struct s_count_keep
 {
@@ -35,8 +36,16 @@ typedef struct s_stack
 	int	best_to_move_to_a;
 	int	moves;
 	struct s_stack *next;
-} t_stack;
+}				t_stack;
 
+//struct for finding best_elem
+typedef struct s_best_elem
+{
+	t_stack *tmp_a;
+	t_stack *tmp_b;
+	t_stack *elem_mv;
+	int min;
+}				t_best;
 //commands
 void swap(t_stack **stack);
 void rotate(t_stack **stack);
@@ -63,9 +72,14 @@ int	init_keep_in_a(t_stack **stack_a, t_stack *m_h, t_count *count);
 //putting from stack_a to stack_b
 t_stack *from_a_to_b(t_stack **stack_a, t_stack **stack_b, t_count *count, t_moves *mv);
 void	sort_a(t_stack **stack_a, t_moves *mv);
+void	init_moves(t_stack **a, t_stack **b);
 //below im starting to push from b to a
 void from_b_to_a(t_stack **stack_b, t_stack **stack_a, t_moves *mv);
 t_stack *needed_elem_in_a(t_stack **a, t_stack **b);
+void	even_init_mv_in_b(t_stack **st);
+void	even_init_mv_in_a(t_stack **st);
+
+t_stack	*best_elem_in_b(t_stack *tmp_b, t_stack *tmp_a, t_stack **a, int min);
 
 void	rotating_b_and_a(t_stack **b, t_moves *mv, t_stack **a);
 void	rotating_a(t_stack **a, t_moves *mv, t_stack *b);

@@ -23,6 +23,9 @@ void	free_memory_lst(t_stack *new)
 {
 	t_stack	*tmp;
 
+	//not sure if needed
+	if (!new)
+		return ;
 	while (new)
 	{
 		tmp = new->next;
@@ -53,6 +56,8 @@ void	filling_stack_a(char **array, t_stack **begin_list_a)
 	int			i;
 	int			n;
 
+	if (!array || !*array)
+		return ;
 	i = 1;
 	while (array[i])
 	{

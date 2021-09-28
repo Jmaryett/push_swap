@@ -5,6 +5,8 @@ void	check_if_stack_is_sorted(t_stack **begin)
 	t_stack	*prev;
 	t_stack	*nex;
 
+	if (!begin || !*begin)
+		return ;
 	prev = *begin;
 	nex = prev->next;
 	while (nex)
@@ -15,11 +17,7 @@ void	check_if_stack_is_sorted(t_stack **begin)
 			nex = prev->next;
 		}
 		else
-		{
-			//printf ("Stack is not sorted\n");
 			return ;
-		}
 	}
-	//printf ("Stack is sorted\n");
 	exit (0);
 }

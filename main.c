@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static void init_moves(t_stack **a, t_stack **b)
+void	init_moves(t_stack **a, t_stack **b)
 {
 	t_stack *tmp_a;
 	t_stack *tmp_b;
@@ -41,6 +41,17 @@ void sort_a(t_stack **stack_a, t_moves *mv)
 	}
 }
 
+static void	b_is_empty(t_stack **a, t_moves *moves)
+{
+	sort_a(a, moves);
+	while (*a)
+	{
+		printf("%d\n", (*a)->number);
+		*a = (*a)->next;
+	}
+	exit(0);
+}
+
 static void starting_to_push(t_stack **stack_a)
 {
 	t_stack *stack_b;
@@ -51,30 +62,21 @@ static void starting_to_push(t_stack **stack_a)
 	count.count_false = 0;
 	moves.count_moves = 0;
 	check_if_stack_is_sorted(stack_a);
-	printf("all good\n");
 	indexation(stack_a);
 	markups(stack_a, &count); //first find best mark_head
 	stack_b = from_a_to_b(stack_a, &stack_b, &count, &moves);
-	//need to check if stack_b is empty, so then we will just sort stack_a using (sort_a) func
 	if (!stack_b)
-	{
-		sort_a(stack_a, &moves);
-		while (*stack_a)
-		{
-			printf("%d\n", (*stack_a)->number);
-			*stack_a = (*stack_a)->next;
-		}
-		exit(0);
-	}
+		b_is_empty(stack_a, &moves);
 	init_moves(stack_a, &stack_b);
 	printf("All good after init_moves\n");
 	sort_a(stack_a, &moves);
 	from_b_to_a(&stack_b, stack_a, &moves);
-	/* 	while (stack_b)
+	sort_a(stack_a, &moves);
+	while (*stack_a)
 	{
-		printf("number is %d\n", stack_b->number);
-		stack_b = stack_b->next;
-	} */
+		printf("index = %d\n", (*stack_a)->index);
+		*stack_a = (*stack_a)->next;
+	}
 }
 
 int main(int argc, char **argv)
@@ -88,6 +90,7 @@ int main(int argc, char **argv)
 	filling_stack_a(argv, &begin_list_a);
 	starting_to_push(&begin_list_a);
 	free_memory_lst(begin_list_a);
+	exit (0);
 	//printf("No sega\n");
 	return (0);
 }

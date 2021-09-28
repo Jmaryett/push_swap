@@ -63,17 +63,5 @@ t_stack *from_a_to_b(t_stack **stack_a, t_stack **stack_b, t_count *c, t_moves *
 		}
 		count_false = do_count_false((*stack_a));
 	}
-	printf("All good after from_a_to_b\n");
-/*  	while (*stack_a)
-	{
-		printf("index = %d\n", (*stack_a)->index);
-		*stack_a = (*stack_a)->next;
-	}
-	printf("moves after stacking = %d\n", mv->count_moves);
-	while (*stack_b)
-	{
-		printf("index of b = %d\n", (*stack_b)->index);
-		*stack_b = (*stack_b)->next;
-	} */
 	return (*stack_b);
 }

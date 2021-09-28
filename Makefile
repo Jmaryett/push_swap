@@ -18,6 +18,7 @@ SRCS	= main.c \
 		7_init_keep_in_a_greater.c \
 		8_from_a_to_b.c \
 		9_from_b_to_a.c \
+		9_add_func.c \
 		10_rotating_b.c \
 		11_rotating_a.c \
 		./commands/push.c \
