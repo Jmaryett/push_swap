@@ -87,7 +87,7 @@ void	rotating_b_and_a(t_stack **b,/*  t_moves *mv,  */t_stack **a)
 
 	len = lstsize(*b)/2;
 	tmp = *b;
-	while(len/2 >= 0)
+	while(len/2 > 0)
 	{
 		if (tmp->best_to_move_to_a == 1)
 		{
@@ -98,7 +98,7 @@ void	rotating_b_and_a(t_stack **b,/*  t_moves *mv,  */t_stack **a)
 		tmp = tmp->next;
 		len--;
 	}
-	len = lstsize(*b);
+	len = lstsize(*a);
 	while (len > len/2)
 	{
 		if (tmp->best_to_move_to_a == 1)

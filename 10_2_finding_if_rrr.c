@@ -9,11 +9,11 @@ static void	a_up_b_down(t_stack **a, t_stack **b/* , t_moves *mv */)
 
 static void	do_rrr(t_stack **a, t_stack **b, t_stack *tmp_a, t_stack *tmp_b)
 {
-	while(*a != tmp_a || *b != tmp_b)
+	while(*a != tmp_a && *b != tmp_b)
 	{
 		reverse_rotate(a);
 		reverse_rotate(b);
-		write (1, "rrr\n", 3);
+		write (1, "rrr\n", 4);
 	}
 	if (*a != tmp_a)
 	{
@@ -48,6 +48,11 @@ void	finding_if_rrr(t_stack *tmp_b, t_stack **a, t_stack **b/* , t_moves *mv */)
 	tmp_a = needed_elem_in_a(a, &tmp_b);
 	len = lstsize(*a);
 	a_tmp = *a;
+	if (tmp_a->moves == 0)
+	{
+		push_b_down(b, a);
+		return ;
+	}
 	while(len > len/2)
 	{
 		if (a_tmp == tmp_a)
@@ -56,7 +61,13 @@ void	finding_if_rrr(t_stack *tmp_b, t_stack **a, t_stack **b/* , t_moves *mv */)
 			push_b_to_a(a, b);
 			return ;
 		}
-		else
+		a_tmp = a_tmp->next;
+		len--;
+	}
+	len = lstsize(*b)/2;
+	while (len >= 0)
+	{
+		if (a_tmp == tmp_a)
 		{
 			a_up_b_down(a,/*  mv,  */b);
 			return ;

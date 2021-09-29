@@ -23,10 +23,11 @@ void	even_init_mv_in_b(t_stack **st)
 	}
 	while (i >= 2 && tmp)
 	{
-		i--;
 		tmp->moves = i;
 		tmp = tmp->next;
+		i--;
 	}
+	//tmp->moves = 2;
 }
 
 void	even_init_mv_in_a(t_stack **st)
