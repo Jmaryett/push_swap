@@ -85,6 +85,8 @@ void check_input(char **array)
 
 	i = 1;
 	count = 0;
+	if (!array || !*array)
+		return ;
 	check_char_valid(array, i, count);
 	if (!check_duplicates(array))
 		error_case("Error\nFound duplicates.\n");

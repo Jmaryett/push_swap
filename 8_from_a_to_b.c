@@ -35,10 +35,12 @@ static int	do_count_false(t_stack *head)
 	return(count_false);
 }
 
-t_stack *from_a_to_b(t_stack **stack_a, t_stack **stack_b, t_count *c, t_moves *mv)
+t_stack *from_a_to_b(t_stack **stack_a, t_stack **stack_b, t_count *c/* , t_moves *mv */)
 {
 	int	count_false;
 
+	if (!stack_a || !*stack_a)
+		return (NULL);
 	count_false = do_count_false(*stack_a);
 	while (count_false != 0)
 	{
@@ -47,19 +49,19 @@ t_stack *from_a_to_b(t_stack **stack_a, t_stack **stack_b, t_count *c, t_moves *
 			swap(stack_a);
 			markups(stack_a, c);
 			write(1, "sa\n", 3);
-			mv->count_moves++;
+			//mv->count_moves++;
 		}
 		else if ((*stack_a)->keep == 0)
 		{
 			*stack_b = push(stack_a, stack_b);//top of a goes to top of b
 			write(1, "pb\n", 3);
-			mv->count_moves++;
+			//mv->count_moves++;
 		}
 		else
 		{
 			rotate(stack_a); //top goes to bot
 			write(1, "ra\n", 3);
-			mv->count_moves++;
+			//mv->count_moves++;
 		}
 		count_false = do_count_false((*stack_a));
 	}

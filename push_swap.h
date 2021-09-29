@@ -55,33 +55,43 @@ void reverse_rotate(t_stack **stack);
 int error_case(char *s);
 void check_input(char **array);
 
-void filling_stack_a(char **array, t_stack **begin_list_a);
-void check_if_stack_is_sorted(t_stack **begin);
-void indexation(t_stack **begin);
-//additional functions
-int lstsize(t_stack *begin);
-void lstadd_back(t_stack **begin_list_a, t_stack *new);
-void free_memory_lst(t_stack *new);
+void	filling_stack_a(char **array, t_stack **begin_list_a);
+void	check_if_stack_is_sorted(t_stack **begin);
+void	indexation(t_stack **begin);
 
+//additional functions
+int		lstsize(t_stack *begin);
+void	lstadd_back(t_stack **begin_list_a, t_stack *new);
+void	free_memory_lst(t_stack *new);
 
 //finding markup_head
 void	init_m_h(t_stack **stack);
 void	init_keep_true_false(t_stack **stack_a);
 void	markups(t_stack **stack_a, t_count *c);
-int	init_keep_in_a(t_stack **stack_a, t_stack *m_h, t_count *count);
+int		init_keep_in_a(t_stack **stack_a, t_stack *m_h, t_count *count);
+
 //putting from stack_a to stack_b
-t_stack *from_a_to_b(t_stack **stack_a, t_stack **stack_b, t_count *count, t_moves *mv);
-void	sort_a(t_stack **stack_a, t_moves *mv);
+t_stack *from_a_to_b(t_stack **stack_a, t_stack **stack_b, t_count *count/* , t_moves *mv */);
+void	sort_a(t_stack **stack_a/* , t_moves *mv */);
 void	init_moves(t_stack **a, t_stack **b);
+
 //below im starting to push from b to a
-void from_b_to_a(t_stack **stack_b, t_stack **stack_a, t_moves *mv);
+void from_b_to_a(t_stack **stack_b, t_stack **stack_a/* , t_moves *mv */);
 t_stack *needed_elem_in_a(t_stack **a, t_stack **b);
 void	even_init_mv_in_b(t_stack **st);
 void	even_init_mv_in_a(t_stack **st);
-
 t_stack	*best_elem_in_b(t_stack *tmp_b, t_stack *tmp_a, t_stack **a, int min);
 
-void	rotating_b_and_a(t_stack **b, t_moves *mv, t_stack **a);
-void	rotating_a(t_stack **a, t_moves *mv, t_stack *b);
+void	rotating_b_and_a(t_stack **b/* , t_moves *mv */, t_stack **a);
+void	finding_if_rr(t_stack *tmp_b, t_stack **a, t_stack **b/* , t_moves *mv */);
+void	finding_if_rrr(t_stack *tmp_b, t_stack **a, t_stack **b/* , t_moves *mv */);
+
+void	push_b_up(/* t_moves *mv,  */t_stack **b, t_stack **a);
+void	push_b_down(/* t_moves *mv,  */t_stack **b, t_stack **a);
+void	rotating_a(t_stack **a/* , t_moves *mv */, t_stack *b);
+void	push_a_up(t_stack **a, t_stack *tmp_a/* , t_moves *mv */);
+void	push_a_down(t_stack **a, t_stack *tmp_a/* , t_moves *mv */);
+
+void	push_b_to_a(t_stack **a, t_stack **b);
 
 #endif

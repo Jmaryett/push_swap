@@ -72,11 +72,13 @@ void init_keep_true_false(t_stack **stack_a)
 } */
 
 
-void markups(t_stack **stack_a, t_count *c)
+void	markups(t_stack **stack_a, t_count *c)
 {
 	t_stack *m_h;
 
 	m_h = *stack_a;
+	if (!stack_a || !*stack_a)
+		return ;
 	init_m_h(stack_a);
 	//finding_best_m_h(stack_a, c);
 	//init_m_h(stack_a);

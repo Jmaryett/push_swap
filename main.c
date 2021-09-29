@@ -20,7 +20,7 @@ void	init_moves(t_stack **a, t_stack **b)
 	}
 }
 
-void sort_a(t_stack **stack_a, t_moves *mv)
+void sort_a(t_stack **stack_a/* , t_moves *mv */)
 {
 	t_stack *tmp;
 	int min;
@@ -36,19 +36,19 @@ void sort_a(t_stack **stack_a, t_moves *mv)
 	while ((*stack_a)->index != min)
 	{
 		rotate(stack_a);
-		mv->count_moves++;
+		//mv->count_moves++;
 		write (1, "ra\n", 3);
 	}
 }
 
-static void	b_is_empty(t_stack **a, t_moves *moves)
+static void	b_is_empty(t_stack **a/* , t_moves *moves */)
 {
-	sort_a(a, moves);
-	while (*a)
+	sort_a(a/* , moves */);
+/* 	while (*a)
 	{
 		printf("%d\n", (*a)->number);
 		*a = (*a)->next;
-	}
+	} */
 	exit(0);
 }
 
@@ -56,23 +56,25 @@ static void starting_to_push(t_stack **stack_a)
 {
 	t_stack *stack_b;
 	t_count count;
-	t_moves moves;
+	//t_moves moves;
 
+	if (!stack_a || !*stack_a)
+		return ;
 	stack_b = NULL;
 	count.count_false = 0;
-	moves.count_moves = 0;
+	//moves.count_moves = 0;
 	check_if_stack_is_sorted(stack_a);
 	indexation(stack_a);
 	markups(stack_a, &count); //first find best mark_head
-	stack_b = from_a_to_b(stack_a, &stack_b, &count, &moves);
+	stack_b = from_a_to_b(stack_a, &stack_b, &count/* , &moves */);
 	if (!stack_b)
-		b_is_empty(stack_a, &moves);
+		b_is_empty(stack_a/* , &moves */);
 	init_moves(stack_a, &stack_b);
-	printf("All good after init_moves\n");
-	sort_a(stack_a, &moves);
-	from_b_to_a(&stack_b, stack_a, &moves);
-	sort_a(stack_a, &moves);
-	while (*stack_a)
+	sort_a(stack_a/* , &moves */);
+	from_b_to_a(&stack_b, stack_a/* , &moves */);
+	free_memory_lst(stack_b);
+	sort_a(stack_a/* , &moves */);
+ 	while (*stack_a)
 	{
 		printf("index = %d\n", (*stack_a)->index);
 		*stack_a = (*stack_a)->next;

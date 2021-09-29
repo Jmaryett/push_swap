@@ -19,8 +19,10 @@ SRCS	= main.c \
 		8_from_a_to_b.c \
 		9_from_b_to_a.c \
 		9_add_func.c \
-		10_rotating_b.c \
-		11_rotating_a.c \
+		10_0_rotating_b_and_a.c \
+		10_1_finding_if_rr.c \
+		10_2_finding_if_rrr.c \
+		10_3_rotating_a.c \
 		./commands/push.c \
 		./commands/rotate.c \
 		./commands/reverse_rotate.c \

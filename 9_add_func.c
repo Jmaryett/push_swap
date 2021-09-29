@@ -29,7 +29,6 @@ void	even_init_mv_in_b(t_stack **st)
 	}
 }
 
-
 void	even_init_mv_in_a(t_stack **st)
 {
 	int len;

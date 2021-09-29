@@ -81,6 +81,8 @@ int	init_keep_in_a(t_stack **stack_a, t_stack *m_h, t_count *count)
 {
 	t_stack	*next_tmp;
 
+	if (!stack_a || !*stack_a)
+		return (0);
 	next_tmp = m_h->next;
 	if (next_tmp)
 		next_isnt_null(next_tmp, m_h, stack_a);

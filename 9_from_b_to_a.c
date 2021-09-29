@@ -107,16 +107,18 @@ static void calculate_moves(t_stack **a, t_stack **b, t_best *best)
 	best->elem_mv->best_to_move_to_a = 1;
 }
 
-void from_b_to_a(t_stack **stack_b, t_stack **stack_a, t_moves *mv)
+void from_b_to_a(t_stack **stack_b, t_stack **stack_a/* , t_moves *mv */)
 {
 	t_best	best;
 
+	if (!stack_b || !*stack_b || !stack_a || !*stack_a)
+		return ;
 	while (*stack_b)
 	{
 		init_mv_in_a(stack_a);
 		init_mv_in_b(stack_b);
 		calculate_moves(stack_a, stack_b, &best);		//this is where we found best elem
-		rotating_b_and_a(stack_b, mv, stack_a); //here we should rotate b, rotate a and then push best elem to a
+		rotating_b_and_a(stack_b,/*  mv,  */stack_a); //here we should rotate b, rotate a and then push best elem to a
 		init_moves(stack_a, stack_b);
 	}
 }
