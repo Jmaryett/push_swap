@@ -27,6 +27,8 @@ int	is_str_digit(char *str)
 	i = 0;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
+	if (!str[i])
+		return (-1);
 	while (str[i])
 	{
 		if (!is_digitc(str[i]))
