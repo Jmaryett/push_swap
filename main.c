@@ -6,7 +6,7 @@
 /*   By: chudapak <chudapak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:48:41 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/01 01:15:19 by chudapak         ###   ########.fr       */
+/*   Updated: 2021/10/01 01:22:45 by chudapak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,9 @@ int	main(int argc, char **argv)
 
 	i = 1;
 	begin_list_a = parse_and_validate_input(argc, argv);
-	return (0);
-	if (argc == 1)
+	if (!begin_list_a)
+		exit(1);
+/* 	if (argc == 1)
 		exit(0);
 	while (argv[i])
 	{
@@ -97,7 +98,7 @@ int	main(int argc, char **argv)
 		check_input(array);
 		begin_list_a = filling_stack_a(array, &begin_list_a);
 		i++;
-	}
+	} */
 	while (begin_list_a)
 	{
 		printf("%d\n", begin_list_a->number);
