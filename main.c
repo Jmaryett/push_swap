@@ -6,7 +6,7 @@
 /*   By: chudapak <chudapak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:48:41 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/09/30 23:52:36 by chudapak         ###   ########.fr       */
+/*   Updated: 2021/10/01 01:15:19 by chudapak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,16 @@ int	main(int argc, char **argv)
 		exit(0);
 	while (argv[i])
 	{
-		array = parsing_one_str(argv[1]);
+		array = parsing_one_str(argv[i]);
 		check_input(array);
 		begin_list_a = filling_stack_a(array, &begin_list_a);
 		i++;
-	}	
+	}
+	while (begin_list_a)
+	{
+		printf("%d\n", begin_list_a->number);
+		begin_list_a = begin_list_a->next;
+	}
 	starting_to_push(&begin_list_a);
 	free_memory_lst(begin_list_a);
 	exit (0);
