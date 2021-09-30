@@ -56,7 +56,7 @@ char	**parsing_one_str(char *av);
 int		error_case(char *s);
 void	check_input(char **array);
 
-void	filling_stack_a(char **array, t_stack **begin_list_a);
+t_stack	*filling_stack_a(char **array, t_stack **begin_list_a);
 void	check_if_stack_is_sorted(t_stack **begin);
 void	indexation(t_stack **begin);
 

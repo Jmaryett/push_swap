@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:48:14 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/09/30 18:25:37 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/09/30 20:31:51 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	do_rrr(t_stack **a, t_stack **b, t_stack *tmp_a, t_stack *tmp_b)
 		while (*a != tmp_a)
 		{
 			reverse_rotate(a);
-			write (1, "rra\n", 3);
+			write (1, "rra\n", 4);
 		}
 	}
 	else if (*b != tmp_b)

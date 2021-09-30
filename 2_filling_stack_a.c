@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:47:04 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/09/30 17:47:05 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/09/30 21:08:55 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,16 @@ static t_stack	*get_lst_new_elem(int n)
 
 //creating first elem of the list with the content
 
-void	filling_stack_a(char **array, t_stack **begin_list_a)
+t_stack	*filling_stack_a(char **array, t_stack **begin_list_a)
 {
+	t_stack		*list;
 	t_stack		*new;
 	int			i;
 	int			n;
 
 	if (!array || !*array)
-		return ;
+		return (NULL);
+	list = *begin_list_a;
 	i = 1;
 	while (array[i])
 	{
@@ -77,7 +79,8 @@ void	filling_stack_a(char **array, t_stack **begin_list_a)
 		new = get_lst_new_elem(n);
 		if (!new)
 			error_case("Error\nCan't allocate memory\n");
-		lstadd_back(begin_list_a, new);
+		lstadd_back(&list, new);
 		i++;
 	}
+	return (*begin_list_a);
 }

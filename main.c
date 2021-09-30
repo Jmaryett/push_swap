@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:48:41 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/09/30 19:56:26 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/09/30 21:08:12 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,17 +83,38 @@ static void	starting_to_push(t_stack **stack_a)
 int	main(int argc, char **argv)
 {
 	t_stack	*begin_list_a;
+	char	**array;
+	int		i;
 
+	i = 1;
 	begin_list_a = NULL;
 	if (argc == 1)
 		exit(0);
-	else if (argc == 2)
-		argv = parsing_one_str(argv[1]);
-	return (0);
+	while (argv[i])
+	{
+		array = parsing_one_str(argv[1]);
+		check_input(array);
+		begin_list_a = filling_stack_a(array, &begin_list_a);
+		i++;
+	}	
+	starting_to_push(&begin_list_a);
+	free_memory_lst(begin_list_a);
+	exit (0);
+/* 	else if (argc == 2)
+	{
+		array = parsing_one_str(argv[1]);
+		for (int j = 0; array[j]; j++)
+     		printf("%s\n", array[j]);
+		check_input(array);
+		filling_stack_a(array, &begin_list_a);
+		starting_to_push(&begin_list_a);
+		free_memory_lst(begin_list_a);
+		exit (0);
+	}
 	check_input(argv);
 	filling_stack_a(argv, &begin_list_a);
 	starting_to_push(&begin_list_a);
 	free_memory_lst(begin_list_a);
 	exit (0);
-	return (0);
+	return (0); */
 }

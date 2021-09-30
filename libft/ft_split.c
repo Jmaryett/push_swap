@@ -84,10 +84,11 @@ static	int	count_first_array(const char *s, char c)
 		i++;
 	if (i == s_len)
 		return (0);
-	while (s[++i])
+	while (s[i])
 	{
 		if ((s[i] != c) && (s[i + 1] == c || s[i + 1] == '\0'))
 			j++;
+		i++;
 	}
 	return (j);
 }
