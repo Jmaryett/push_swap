@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   1_check_input.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/30 17:46:53 by jmaryett          #+#    #+#             */
+/*   Updated: 2021/09/30 17:46:55 by jmaryett         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static int check_min_max_int(char **array)
+static int	check_min_max_int(char **array)
 {
-	long n;
-	int i;
+	long	n;
+	int		i;
 
 	n = 0;
 	i = 0;
@@ -17,10 +29,10 @@ static int check_min_max_int(char **array)
 	return (1);
 }
 
-static int check_dupl_atoi(char *s1, char *s2)
+static int	check_dupl_atoi(char *s1, char *s2)
 {
-	int n;
-	int n2;
+	int	n;
+	int	n2;
 
 	n = ft_atoi(s1);
 	n2 = ft_atoi(s2);
@@ -29,10 +41,10 @@ static int check_dupl_atoi(char *s1, char *s2)
 	return (1);
 }
 
-static int check_duplicates(char **array)
+static int	check_duplicates(char **array)
 {
-	int i;
-	int prev;
+	int	i;
+	int	prev;
 
 	i = 1;
 	prev = 2;
@@ -50,9 +62,9 @@ static int check_duplicates(char **array)
 	return (1);
 }
 
-static void check_char_valid(char **array, int i, int c)
+static void	check_char_valid(char **array, int i, int c)
 {
-	int j;
+	int	j;
 
 	while (array[i])
 	{
@@ -75,13 +87,13 @@ static void check_char_valid(char **array, int i, int c)
 		c = 0;
 		i++;
 	}
-	return;
+	return ;
 }
 
-void check_input(char **array)
+void	check_input(char **array)
 {
-	int i;
-	int count;
+	int	i;
+	int	count;
 
 	i = 1;
 	count = 0;

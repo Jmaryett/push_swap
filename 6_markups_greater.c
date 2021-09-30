@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   6_markups_greater.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/30 17:47:31 by jmaryett          #+#    #+#             */
+/*   Updated: 2021/09/30 17:47:32 by jmaryett         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void init_m_h(t_stack **stack)
+void	init_m_h(t_stack **stack)
 {
 	t_stack	*tmp;
 
@@ -12,7 +24,7 @@ void init_m_h(t_stack **stack)
 	}
 }
 
-void init_keep_true_false(t_stack **stack_a)
+void	init_keep_true_false(t_stack **stack_a)
 {
 	t_stack	*tmp;
 
@@ -42,7 +54,7 @@ static t_stack	*init_first_best_result(t_stack *t, t_count *c, t_stack **a)
 
 static void	finding_best_m_h(t_stack **stack_a, t_count *c)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = *stack_a;
 	tmp = init_first_best_result(tmp, c, stack_a);
@@ -65,12 +77,11 @@ static void	finding_best_m_h(t_stack **stack_a, t_count *c)
 		init_keep_true_false(stack_a);
 		tmp = tmp->next;
 	}
-	//printf("best result is %d\n", c->best_result);
 }
 
-void markups(t_stack **stack_a, t_count *c)
+void	markups(t_stack **stack_a, t_count *c)
 {
-	t_stack *m_h;
+	t_stack	*m_h;
 
 	if (!stack_a || !*stack_a)
 		return ;

@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   4_list_size.c                                      :+:      :+:    :+:   */
+/*   0_parsing_one_str.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/30 17:47:18 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/09/30 17:47:19 by jmaryett         ###   ########.fr       */
+/*   Created: 2021/09/30 18:31:02 by jmaryett          #+#    #+#             */
+/*   Updated: 2021/09/30 19:55:52 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	lstsize(t_stack *begin)
+char	**parsing_one_str(char *av)
 {
-	int		len;
-	t_stack	*tmp;
+	int		i;
+	char	**array;
 
-	if (!begin)
-		return (0);
-	tmp = begin;
-	len = 0;
-	while (tmp)
+	i = 0;
+	while (av[i])
 	{
-		tmp = tmp->next;
-		len++;
+		if (!ft_isdigit(av[i]))
+			error_case("Error\nInvalid str.\n");
+		i++;
 	}
-	return (len);
+	array = ft_split(av, ' ');
+	return (array);
 }

@@ -1,6 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   2_filling_stack_a.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/30 17:47:04 by jmaryett          #+#    #+#             */
+/*   Updated: 2021/09/30 17:47:05 by jmaryett         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 //creating element of the list with content
+
 void	lstadd_back(t_stack **begin_list_a, t_stack *new)
 {
 	t_stack	*tmp;
@@ -19,11 +32,11 @@ void	lstadd_back(t_stack **begin_list_a, t_stack *new)
 }
 
 //if memory can't allocate we free the list
+
 void	free_memory_lst(t_stack *new)
 {
 	t_stack	*tmp;
 
-	//not sure if needed
 	if (!new)
 		return ;
 	while (new)
@@ -51,8 +64,7 @@ static t_stack	*get_lst_new_elem(int n)
 
 void	filling_stack_a(char **array, t_stack **begin_list_a)
 {
-	//will be saved as the pointer to the first elem of list
-	t_stack	*new;
+	t_stack		*new;
 	int			i;
 	int			n;
 

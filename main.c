@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/30 17:48:41 by jmaryett          #+#    #+#             */
+/*   Updated: 2021/09/30 19:56:26 by jmaryett         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	init_moves(t_stack **a, t_stack **b)
 {
-	t_stack *tmp_a;
-	t_stack *tmp_b;
+	t_stack	*tmp_a;
+	t_stack	*tmp_b;
 
 	tmp_a = *a;
 	tmp_b = *b;
@@ -20,10 +32,10 @@ void	init_moves(t_stack **a, t_stack **b)
 	}
 }
 
-void sort_a(t_stack **stack_a/* , t_moves *mv */)
+void	sort_a(t_stack **stack_a)
 {
-	t_stack *tmp;
-	int min;
+	t_stack	*tmp;
+	int		min;
 
 	tmp = *stack_a;
 	min = tmp->index;
@@ -36,63 +48,52 @@ void sort_a(t_stack **stack_a/* , t_moves *mv */)
 	while ((*stack_a)->index != min)
 	{
 		rotate(stack_a);
-		//mv->count_moves++;
 		write (1, "ra\n", 3);
 	}
 }
 
-static void	b_is_empty(t_stack **a/* , t_moves *moves */)
+static void	b_is_empty(t_stack **a)
 {
-	sort_a(a/* , moves */);
-/* 	while (*a)
-	{
-		printf("%d\n", (*a)->number);
-		*a = (*a)->next;
-	} */
+	sort_a(a);
 	exit(0);
 }
 
-static void starting_to_push(t_stack **stack_a)
+static void	starting_to_push(t_stack **stack_a)
 {
-	t_stack *stack_b;
-	t_count count;
-	//t_moves moves;
+	t_stack	*stack_b;
+	t_count	count;
 
 	if (!stack_a || !*stack_a)
 		return ;
 	stack_b = NULL;
 	count.count_false = 0;
-	//moves.count_moves = 0;
 	check_if_stack_is_sorted(stack_a);
 	indexation(stack_a);
-	markups(stack_a, &count); //first find best mark_head
-	stack_b = from_a_to_b(stack_a, &stack_b, &count/* , &moves */);
+	markups(stack_a, &count);
+	stack_b = from_a_to_b(stack_a, &stack_b, &count);
 	if (!stack_b)
-		b_is_empty(stack_a/* , &moves */);
+		b_is_empty(stack_a);
 	init_moves(stack_a, &stack_b);
-	sort_a(stack_a/* , &moves */);
-	from_b_to_a(&stack_b, stack_a/* , &moves */);
+	sort_a(stack_a);
+	from_b_to_a(&stack_b, stack_a);
 	free_memory_lst(stack_b);
-	sort_a(stack_a/* , &moves */);
- 	while (*stack_a)
-	{
-		printf("index = %d\n", (*stack_a)->index);
-		*stack_a = (*stack_a)->next;
-	}
+	sort_a(stack_a);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_stack *begin_list_a;
+	t_stack	*begin_list_a;
 
-	if (argc < 3)
-		exit(0);
-	check_input(argv);
 	begin_list_a = NULL;
+	if (argc == 1)
+		exit(0);
+	else if (argc == 2)
+		argv = parsing_one_str(argv[1]);
+	return (0);
+	check_input(argv);
 	filling_stack_a(argv, &begin_list_a);
 	starting_to_push(&begin_list_a);
 	free_memory_lst(begin_list_a);
 	exit (0);
-	//printf("No sega\n");
 	return (0);
 }

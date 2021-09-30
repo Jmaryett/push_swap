@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   10_2_finding_if_rrr.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/30 17:48:14 by jmaryett          #+#    #+#             */
+/*   Updated: 2021/09/30 18:25:37 by jmaryett         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static void	a_up_b_down(t_stack **a, t_stack **b/* , t_moves *mv */)
+static void	a_up_b_down(t_stack **a, t_stack **b)
 {
-	rotating_a(a,/*  mv,  */*b); //i could write this func here to cut lines
-	push_b_down(/* mv,  */b, a);
+	rotating_a(a,*b);
+	push_b_down(b, a);
 	return ;
 }
 
 static void	do_rrr(t_stack **a, t_stack **b, t_stack *tmp_a, t_stack *tmp_b)
 {
-	while(*a != tmp_a && *b != tmp_b)
+	while (*a != tmp_a && *b != tmp_b)
 	{
 		reverse_rotate(a);
 		reverse_rotate(b);
@@ -39,11 +51,30 @@ void	push_b_to_a(t_stack **a, t_stack **b)
 	write (1, "pa\n", 3);
 }
 
-void	finding_if_rrr(t_stack *tmp_b, t_stack **a, t_stack **b/* , t_moves *mv */)
+static void	a_in_first_half(t_stack **a, t_stack **b,
+							t_stack *a_tmp, t_stack *tmp_a)
+{
+	int		len;
+
+	len = lstsize(*b) / 2;
+	while (len >= 0)
+	{
+		if (a_tmp == tmp_a)
+		{
+			a_up_b_down(a, b);
+			return ;
+		}
+		a_tmp = a_tmp->next;
+		len--;
+	}
+	return ;
+}
+
+void	finding_if_rrr(t_stack *tmp_b, t_stack **a, t_stack **b)
 {
 	t_stack	*a_tmp;
 	t_stack	*tmp_a;
-	int	len;
+	int		len;
 
 	tmp_a = needed_elem_in_a(a, &tmp_b);
 	len = lstsize(*a);
@@ -53,7 +84,7 @@ void	finding_if_rrr(t_stack *tmp_b, t_stack **a, t_stack **b/* , t_moves *mv */)
 		push_b_down(b, a);
 		return ;
 	}
-	while(len > len/2)
+	while (len > len / 2)
 	{
 		if (a_tmp == tmp_a)
 		{
@@ -64,15 +95,5 @@ void	finding_if_rrr(t_stack *tmp_b, t_stack **a, t_stack **b/* , t_moves *mv */)
 		a_tmp = a_tmp->next;
 		len--;
 	}
-	len = lstsize(*b)/2;
-	while (len >= 0)
-	{
-		if (a_tmp == tmp_a)
-		{
-			a_up_b_down(a,/*  mv,  */b);
-			return ;
-		}
-		a_tmp = a_tmp->next;
-		len--;
-	}
+	a_in_first_half(a, b, a_tmp, tmp_a);
 }

@@ -1,12 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   9_from_b_to_a.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/30 17:47:58 by jmaryett          #+#    #+#             */
+/*   Updated: 2021/09/30 17:47:58 by jmaryett         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-//calculate moves to put elem to the top of st b and the same for stack a after push it there
-//we do this for each element in stack b and choose the one with least moves and move it to a
-static void init_mv_in_b(t_stack **st)
+//calculate moves to put elem to the top of 
+//st b and the same for stack a after push it there
+//we do this for each element in stack
+// b and choose the one with least moves and move it to a
+
+static void	init_mv_in_b(t_stack **st)
 {
-	int len;
-	int i;
-	t_stack *tmp;
+	int		len;
+	int		i;
+	t_stack	*tmp;
 
 	i = 1;
 	len = lstsize(*st);
@@ -30,11 +45,11 @@ static void init_mv_in_b(t_stack **st)
 	}
 }
 
-static void init_mv_in_a(t_stack **st)
+static void	init_mv_in_a(t_stack **st)
 {
-	int len;
-	int i;
-	t_stack *tmp;
+	int		len;
+	int		i;
+	t_stack	*tmp;
 
 	i = 1;
 	len = lstsize(*st);
@@ -58,10 +73,10 @@ static void init_mv_in_a(t_stack **st)
 	}
 }
 
-t_stack *needed_elem_in_a(t_stack **a, t_stack **b)
+t_stack	*needed_elem_in_a(t_stack **a, t_stack **b)
 {
-	t_stack *tmp_a;
-	t_stack *tmp_b;
+	t_stack	*tmp_a;
+	t_stack	*tmp_b;
 
 	tmp_a = *a;
 	tmp_b = *b;
@@ -77,13 +92,9 @@ t_stack *needed_elem_in_a(t_stack **a, t_stack **b)
 //here i find best elem in b to move to a
 //we need to sum using indexes and moves of that index
 //also we calculate the index in b and its NEXT index in a
-static void calculate_moves(t_stack **a, t_stack **b, t_best *best)
+
+static void	calculate_moves(t_stack **a, t_stack **b, t_best *best)
 {
-/* 	t_stack *tmp_a;
-	t_stack *tmp_b;
-	t_stack *best;
-	int min;
- */
 	best->tmp_b = *b;
 	best->tmp_a = needed_elem_in_a(a, &best->tmp_b);
 	best->min = best->tmp_b->moves + best->tmp_a->moves;
@@ -107,7 +118,7 @@ static void calculate_moves(t_stack **a, t_stack **b, t_best *best)
 	best->elem_mv->best_to_move_to_a = 1;
 }
 
-void from_b_to_a(t_stack **stack_b, t_stack **stack_a/* , t_moves *mv */)
+void	from_b_to_a(t_stack **stack_b, t_stack **stack_a)
 {
 	t_best	best;
 
@@ -117,8 +128,8 @@ void from_b_to_a(t_stack **stack_b, t_stack **stack_a/* , t_moves *mv */)
 	{
 		init_mv_in_a(stack_a);
 		init_mv_in_b(stack_b);
-		calculate_moves(stack_a, stack_b, &best);		//this is where we found best elem
-		rotating_b_and_a(stack_b,/*  mv,  */stack_a); //here we should rotate b, rotate a and then push best elem to a
+		calculate_moves(stack_a, stack_b, &best);
+		rotating_b_and_a(stack_b, stack_a);
 		init_moves(stack_a, stack_b);
 	}
 }

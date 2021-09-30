@@ -9,6 +9,7 @@ HEADER = push_swap.h
 HEADER_LIBA = ./libft/libft.h
 
 SRCS	= main.c \
+		0_parsing_one_str.c \
 		1_check_input.c \
 		2_filling_stack_a.c \
 		3_check_if_stack_is_sorted.c \
@@ -30,7 +31,8 @@ SRCS	= main.c \
 		error_case.c
 		
 
-SRCS_2	= ./libft/ft_atoi.c
+SRCS_2	= ./libft/ft_atoi.c \
+			./libft/ft_split.c
 
 OBJS	= ${SRCS:.c=.o}
 
@@ -66,6 +68,9 @@ ${LIBA}: ${LIBFT_C}
 
 ${NAME}: ${LIBA} ${HEADER} ${OBJS} ${OBJS_2}
 		${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${OBJS_2} ${LIBA} 
+
+norm: ${SRCS} ${LIBFT_C} ${HEADER} ${HEADER_LIBA}
+		norminette ${SRCS} ${LIBFT_C} ${HEADER} ${HEADER_LIBA}
 
 clean:
 		${RM} ${OBJS} ${OBJS_2}

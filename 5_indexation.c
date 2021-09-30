@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   5_indexation.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/30 17:47:25 by jmaryett          #+#    #+#             */
+/*   Updated: 2021/09/30 17:47:26 by jmaryett         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static void init_index(t_stack **begin)
+static void	init_index(t_stack **begin)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = *begin;
 	while (tmp)
@@ -12,12 +24,12 @@ static void init_index(t_stack **begin)
 	}
 }
 
-static void giving_index(t_stack **begin, int len)
+static void	giving_index(t_stack **begin, int len)
 {
-	int i;
-	int min;
-	t_stack *begin_tmp;
-	t_stack *tmp;
+	int		i;
+	int		min;
+	t_stack	*begin_tmp;
+	t_stack	*tmp;
 
 	min = INT_MAX;
 	i = 0;
@@ -40,9 +52,9 @@ static void giving_index(t_stack **begin, int len)
 	}
 }
 
-void indexation(t_stack **begin)
+void	indexation(t_stack **begin)
 {
-	int len;
+	int	len;
 
 	if (!begin || !*begin)
 		return ;

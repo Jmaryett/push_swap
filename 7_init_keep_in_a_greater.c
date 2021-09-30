@@ -1,13 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   7_init_keep_in_a_greater.c                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/30 17:47:39 by jmaryett          #+#    #+#             */
+/*   Updated: 2021/09/30 17:47:40 by jmaryett         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	circle_list_a(t_stack *n, t_stack *m_h)
 {
-	while (n->markup_head != 1 /* m_h->markup_head != 1 */)
+	while (n->markup_head != 1)
 	{
 		if (m_h->number > n->number)
 		{
 			n->keep = 0;
-			//m_h = n;
 			n = n->next;
 		}
 		else
@@ -26,7 +37,6 @@ static void	next_isnt_null(t_stack *n, t_stack *m_h, t_stack **a)
 		if (m_h->number > n->number)
 		{
 			n->keep = 0;
-			//m_h = n;
 			n = n->next;
 		}
 		else
@@ -36,8 +46,7 @@ static void	next_isnt_null(t_stack *n, t_stack *m_h, t_stack **a)
 			n = n->next;
 		}
 	}
-	//m_h = *a;
-	n = *a; //m_h->next;
+	n = *a;
 	circle_list_a(n, m_h);
 }
 
@@ -51,7 +60,6 @@ static void	next_null(t_stack **a, t_stack *m_h)
 		if (m_h->number > n->number)
 		{
 			n->keep = 0;
-			//m_h = n;
 			n = n->next;
 		}
 		else

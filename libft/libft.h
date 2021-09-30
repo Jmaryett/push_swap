@@ -25,7 +25,7 @@ int		ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
-long		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 int		ft_memcmp(const void *arr1, const void *arr2, size_t n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	ft_bzero(void *s, size_t n);
