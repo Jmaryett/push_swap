@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2_filling_stack_a.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chudapak <chudapak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:47:04 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/09/30 21:08:55 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/01 00:33:46 by chudapak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	free_memory_lst(t_stack *new)
 }
 
 //adding content to the new elem of list
-static t_stack	*get_lst_new_elem(int n)
+t_stack	*get_lst_new_elem(int n)
 {
 	t_stack	*new;
 

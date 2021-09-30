@@ -28,7 +28,8 @@ SRCS	= main.c \
 		./commands/rotate.c \
 		./commands/reverse_rotate.c \
 		./commands/swap.c \
-		error_case.c
+		error_case.c \
+		./parsing.c
 		
 
 SRCS_2	= ./libft/ft_atoi.c \
@@ -45,9 +46,6 @@ AR 	= ar rc
 CC	= gcc -g
 
 CFLAGS	= -Wall -Wextra -Werror
-
- #%.o: %.c
-#	 ${CC} ${CFLAGS} -Imlx -c $< -o $@ 
 
 .c.o:
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}

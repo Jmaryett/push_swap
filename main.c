@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chudapak <chudapak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:48:41 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/09/30 21:08:12 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/09/30 23:52:36 by chudapak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ int	main(int argc, char **argv)
 	int		i;
 
 	i = 1;
-	begin_list_a = NULL;
+	begin_list_a = parse_and_validate_input(argc, argv);
+	return (0);
 	if (argc == 1)
 		exit(0);
 	while (argv[i])

@@ -4,6 +4,8 @@
 
 # include "./libft/libft.h"
 
+# include <limits.h>
+
 # ifndef INT_MAX
 #  define INT_MAX 2147483647
 # endif
@@ -98,5 +100,8 @@ void	push_a_up(t_stack **a, t_stack *tmp_a);
 void	push_a_down(t_stack **a, t_stack *tmp_a);
 
 void	push_b_to_a(t_stack **a, t_stack **b);
+
+t_stack	*parse_and_validate_input(int ac, char **av);
+t_stack	*get_lst_new_elem(int n);
 
 #	endif
