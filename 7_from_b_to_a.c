@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:47:58 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/01 19:04:44 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/02 00:18:43 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,18 +75,28 @@ static void	init_mv_in_a(t_stack **st)
 
 t_stack	*needed_elem_in_a(t_stack **a, t_stack **b)
 {
+	t_stack	*needed;
 	t_stack	*tmp_a;
-	t_stack	*tmp_b;
-
+	
+	if (!a || !*a || !b || !*b)
+		return (NULL);
 	tmp_a = *a;
-	tmp_b = *b;
+	needed = tmp_a;
 	while (tmp_a)
 	{
-		if (tmp_b->index < tmp_a->index)
-			return (tmp_a);
-		tmp_a = tmp_a->next;
+		if (tmp_a->index < (*b)->index)
+			tmp_a = tmp_a->next;
+		else if (tmp_a->index - (*b)->index < needed->index - (*b)->index)
+		{
+			needed = tmp_a;
+			tmp_a = tmp_a->next;
+		}
+		else
+			tmp_a = tmp_a->next;
 	}
-	return (NULL);
+	if (needed == *a)
+		return (NULL);
+	return (needed);
 }
 
 //here i find best elem in b to move to a
@@ -95,25 +105,33 @@ t_stack	*needed_elem_in_a(t_stack **a, t_stack **b)
 
 static void	calculate_moves(t_stack **a, t_stack **b, t_best *best)
 {
-	best->tmp_b = *b;
-	best->tmp_a = needed_elem_in_a(a, &best->tmp_b);
-	best->min = best->tmp_b->moves + best->tmp_a->moves;
-	best->elem_mv = best->tmp_b;
-	best->tmp_b = best->tmp_b->next;
-	while (best->tmp_b)
+	t_stack	*tmp_b = *b;
+
+	while (tmp_b)
 	{
-		best->tmp_a = needed_elem_in_a(a, &best->tmp_b);
-		if (best->tmp_b->moves + best->tmp_a->moves < best->min)
+		if (!(init_first_best_elem(best, b, a)))
+			tmp_b = tmp_b->next;
+		else
 		{
-			best->min = best->tmp_a->moves + best->tmp_b->moves;
-			best->elem_mv = best->tmp_b;
+			while (best->tmp_b)
+			{
+				best->tmp_a = needed_elem_in_a(a, &best->tmp_b);
+				if (!best->tmp_a)
+					best->tmp_b = best->tmp_b->next;
+				else if (best->tmp_b->moves + best->tmp_a->moves < best->min)
+				{
+					best->min = best->tmp_a->moves + best->tmp_b->moves;
+					best->elem_mv = best->tmp_b;
+				}
+				else if (best->tmp_b->moves + best->tmp_a->moves == best->min)
+				{
+					if (best->tmp_b->index < best->elem_mv->index)
+						best->elem_mv = best->tmp_b;
+				}
+				else
+					best->tmp_b = best->tmp_b->next;
+			}
 		}
-		else if (best->tmp_b->moves + best->tmp_a->moves == best->min)
-		{
-			if (best->tmp_b->index < best->elem_mv->index)
-				best->elem_mv = best->tmp_b;
-		}
-		best->tmp_b = best->tmp_b->next;
 	}
 	best->elem_mv->best_to_move_to_a = 1;
 }
@@ -130,7 +148,7 @@ void	from_b_to_a(t_stack **stack_b, t_stack **stack_a)
 		init_mv_in_b(stack_b);
 		calculate_moves(stack_a, stack_b, &best);
 		rotating_b_and_a(stack_b, stack_a);
-		sort_a(stack_a);
+		//sort_a(stack_a);
 		init_moves(stack_a, stack_b);
 	}
 }

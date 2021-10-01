@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:47:39 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/01 22:22:16 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/01 22:23:36 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	circle_list_a(t_stack *n, t_stack *m_h)
 {
 	while (n->markup_head != 1)
 	{
-		if (m_h->number > n->number)
+		if (m_h->index + 1 != n->index)
 		{
 			n->keep = 0;
 			n = n->next;
@@ -34,7 +34,7 @@ static void	next_isnt_null(t_stack *n, t_stack *m_h, t_stack **a)
 {
 	while (n)
 	{
-		if (m_h->number > n->number)
+		if (m_h->index + 1 != n->index)
 		{
 			n->keep = 0;
 			n = n->next;
