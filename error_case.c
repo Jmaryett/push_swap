@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:48:33 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/09/30 17:48:34 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/01 17:40:35 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,5 @@
 int	error_case(char *s)
 {
 	ft_putstr_fd(s, 1);
-	exit (0);
-}
-
-int	printing_instructions(char *s)
-{
-	ft_putstr_fd(s, 1);
-	exit (0);
+	exit (1);
 }

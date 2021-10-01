@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   7_init_keep_in_a_greater.c                         :+:      :+:    :+:   */
+/*   5_init_keep_in_a_greater.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:47:39 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/09/30 17:47:40 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/01 22:22:16 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	next_null(t_stack **a, t_stack *m_h)
 	n = *a;
 	while (n && n->markup_head != 1)
 	{
-		if (m_h->number > n->number)
+		if (m_h->index + 1 != n->index)
 		{
 			n->keep = 0;
 			n = n->next;

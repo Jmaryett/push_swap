@@ -54,18 +54,19 @@ void	reverse_rotate(t_stack **stack);
 
 //validating
 
-char	**parsing_one_str(char *av);
 int		error_case(char *s);
-void	check_input(char **array);
+t_stack	*parse_and_validate_input(int ac, char **av);
+int	add_arguments_to_stack(t_stack **data_stack, char **arguments);
+int	validate_arguments(char **arguments);
 
-t_stack	*filling_stack_a(char **array, t_stack **begin_list_a);
-void	check_if_stack_is_sorted(t_stack **begin);
 void	indexation(t_stack **begin);
 
 //additional functions
 
+void	free_array_of_strings(char **t);
 int		lstsize(t_stack *begin);
 void	lstadd_back(t_stack **begin_list_a, t_stack *new);
+t_stack	*get_lst_new_elem(int n);
 void	free_memory_lst(t_stack *new);
 
 //finding markup_head
@@ -100,8 +101,5 @@ void	push_a_up(t_stack **a, t_stack *tmp_a);
 void	push_a_down(t_stack **a, t_stack *tmp_a);
 
 void	push_b_to_a(t_stack **a, t_stack **b);
-
-t_stack	*parse_and_validate_input(int ac, char **av);
-t_stack	*get_lst_new_elem(int n);
 
 #	endif

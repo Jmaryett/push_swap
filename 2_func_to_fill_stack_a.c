@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   2_filling_stack_a.c                                :+:      :+:    :+:   */
+/*   2_func_to_fill_stack_a.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chudapak <chudapak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:47:04 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/01 00:33:46 by chudapak         ###   ########.fr       */
+/*   Updated: 2021/10/01 18:03:52 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	free_memory_lst(t_stack *new)
 	}
 }
 
-//adding content to the new elem of list
+//добавляем число в новый элемент списка
 t_stack	*get_lst_new_elem(int n)
 {
 	t_stack	*new;
@@ -60,8 +60,24 @@ t_stack	*get_lst_new_elem(int n)
 	return (new);
 }
 
-//creating first elem of the list with the content
+int	lstsize(t_stack *begin)
+{
+	int		len;
+	t_stack	*tmp;
 
+	if (!begin)
+		return (0);
+	tmp = begin;
+	len = 0;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		len++;
+	}
+	return (len);
+}
+
+/* //creating first elem of the list with the content
 t_stack	*filling_stack_a(char **array, t_stack **begin_list_a)
 {
 	t_stack		*list;
@@ -83,4 +99,4 @@ t_stack	*filling_stack_a(char **array, t_stack **begin_list_a)
 		i++;
 	}
 	return (*begin_list_a);
-}
+} */

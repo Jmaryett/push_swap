@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   9_from_b_to_a.c                                    :+:      :+:    :+:   */
+/*   7_from_b_to_a.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:47:58 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/09/30 21:18:21 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/01 19:04:44 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ void	from_b_to_a(t_stack **stack_b, t_stack **stack_a)
 		init_mv_in_b(stack_b);
 		calculate_moves(stack_a, stack_b, &best);
 		rotating_b_and_a(stack_b, stack_a);
+		sort_a(stack_a);
 		init_moves(stack_a, stack_b);
 	}
 }

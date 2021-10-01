@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chudapak <chudapak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:48:41 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/01 01:22:45 by chudapak         ###   ########.fr       */
+/*   Updated: 2021/10/01 20:30:25 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ static void	starting_to_push(t_stack **stack_a)
 		return ;
 	stack_b = NULL;
 	count.count_false = 0;
-	check_if_stack_is_sorted(stack_a);
 	indexation(stack_a);
 	markups(stack_a, &count);
 	stack_b = from_a_to_b(stack_a, &stack_b, &count);
@@ -75,53 +74,29 @@ static void	starting_to_push(t_stack **stack_a)
 		b_is_empty(stack_a);
 	init_moves(stack_a, &stack_b);
 	sort_a(stack_a);
+/* 	while (*stack_a)
+	{
+		printf("%d\n", (*stack_a)->index);
+		*stack_a = (*stack_a)->next;
+	}
+	printf("\n");
+	while (stack_b)
+	{
+		printf("%d\n", stack_b->index);
+		stack_b = stack_b->next;
+	} */
 	from_b_to_a(&stack_b, stack_a);
 	free_memory_lst(stack_b);
-	sort_a(stack_a);
 }
 
 int	main(int argc, char **argv)
 {
-	t_stack	*begin_list_a;
-	char	**array;
-	int		i;
+	t_stack	*stack_a;
 
-	i = 1;
-	begin_list_a = parse_and_validate_input(argc, argv);
-	if (!begin_list_a)
+	stack_a = parse_and_validate_input(argc, argv);
+	if (!stack_a)
 		exit(1);
-/* 	if (argc == 1)
-		exit(0);
-	while (argv[i])
-	{
-		array = parsing_one_str(argv[i]);
-		check_input(array);
-		begin_list_a = filling_stack_a(array, &begin_list_a);
-		i++;
-	} */
-	while (begin_list_a)
-	{
-		printf("%d\n", begin_list_a->number);
-		begin_list_a = begin_list_a->next;
-	}
-	starting_to_push(&begin_list_a);
-	free_memory_lst(begin_list_a);
-	exit (0);
-/* 	else if (argc == 2)
-	{
-		array = parsing_one_str(argv[1]);
-		for (int j = 0; array[j]; j++)
-     		printf("%s\n", array[j]);
-		check_input(array);
-		filling_stack_a(array, &begin_list_a);
-		starting_to_push(&begin_list_a);
-		free_memory_lst(begin_list_a);
-		exit (0);
-	}
-	check_input(argv);
-	filling_stack_a(argv, &begin_list_a);
-	starting_to_push(&begin_list_a);
-	free_memory_lst(begin_list_a);
-	exit (0);
-	return (0); */
+	starting_to_push(&stack_a);
+	free_memory_lst(stack_a);
+	exit (1);
 }
