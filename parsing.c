@@ -115,6 +115,43 @@ t_stack	*fill_with_numbers(int number_arguments, char **argument)
 	printf("\n"); */
 	return (data_stack);
 }
+/*
+** Здесь проверяем отсортирован ли массив и есть ли в нем повторяющиеся числа
+*/
+int	check_duplicants_and_is_sorted(t_stack *data_stack)
+{
+	t_stack	*i;
+	t_stack	*j;
+	int		is_array_sorted;				//1 это отсортирован 0 нет, по умолчанию задаем значение 1
+
+	is_array_sorted = 1;
+	i = data_stack;
+	while (i)
+	{
+		j = i->next;
+		while (j)
+		{
+			if (i->number == j->number)
+				return (-1);
+			if (i->number >= j->number)
+				is_array_sorted = 0;
+			j = j->next;
+		}
+		i = i->next;
+	}
+	if (is_array_sorted == 1)
+		return (-1);
+	return (0);
+}
+
+int	validate_stack(t_stack *data_stack)
+{
+	if (lstsize(data_stack) < 2)
+		return (-1);
+	if (check_duplicants_and_is_sorted(data_stack))
+		return (-1);
+	return (0);
+}
 
 t_stack	*parse_and_validate_input(int ac, char **av)
 {
@@ -123,5 +160,7 @@ t_stack	*parse_and_validate_input(int ac, char **av)
 	if (ac < 2)
 		exit(1);
 	data_stack = fill_with_numbers(--ac, ++av);
+	if (validate_stack(data_stack) == -1)
+		free_memory_lst(data_stack);
 	return (data_stack);
 }
