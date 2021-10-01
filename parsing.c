@@ -108,7 +108,7 @@ t_stack	*fill_with_numbers(int number_arguments, char **argument)
 /* 	printf("------------------\n");
 	t_stack *tmp;
 	tmp = data_stack;
-	while (tmp) {
+	while (tmp) {															//для тестиков шместиков
 		printf("%d ", tmp->number);
 		tmp = tmp->next;
 	}
@@ -153,14 +153,30 @@ int	validate_stack(t_stack *data_stack)
 	return (0);
 }
 
+/*
+** Все что закоментил можешь смело удалять
+** В кратце - сначала проверяем количество аргументов;
+**			- заполняем стак распареными значениями
+**				- добавляем каждый аргумент по отдельности предварительно прогнав его через сплит
+**				  а потом проверив число это или нет (50-19 - такое говно не проходит)
+**				- потом все аргументы которые выдал сплит добавляем в конец к data_stack
+**				  (все запротектил, да же если память не выделится, то стоит протект)
+**			- валидируем стэк
+**				- сначала проверяем размер стэка
+**				- потом в одном цикле проверяем есть ли дупликаты и смотрим отсортирован ли уже список.
+*/
+
 t_stack	*parse_and_validate_input(int ac, char **av)
 {
 	t_stack	*data_stack;
 
 	if (ac < 2)
-		exit(1);
+		return (NULL);
 	data_stack = fill_with_numbers(--ac, ++av);
 	if (validate_stack(data_stack) == -1)
+	{
 		free_memory_lst(data_stack);
+		data_stack = NULL;
+	}
 	return (data_stack);
 }
