@@ -87,6 +87,7 @@ void	init_moves(t_stack **a, t_stack **b);
 void	from_b_to_a(t_stack **stack_b, t_stack **stack_a);
 int		init_first_best_elem(t_best *best, t_stack **b, t_stack **a);
 t_stack	*needed_elem_in_a(t_stack **a, t_stack **b);
+void	init_mv_in_b(t_stack **st);
 void	even_init_mv_in_b(t_stack **st);
 void	even_init_mv_in_a(t_stack **st);
 t_stack	*best_elem_in_b(t_stack *tmp_b, t_stack *tmp_a, t_stack **a, int min);

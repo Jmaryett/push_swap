@@ -44,7 +44,7 @@ t_stack	*smaller_index_for_b(t_stack **a, t_stack **b)
 int	init_first_best_bigger_ind_to_move(t_best *best, t_stack **b, t_stack **a)
 {
 	best->tmp_b = *b;
-	best->tmp_a = smaller_index_for_b(a, &(best->tmp_b));
+	best->tmp_a = smaller_index_for_b(a, &best->tmp_b);
 	if (!best->tmp_a)
 		return (0);
 	best->min = best->tmp_b->moves + best->tmp_a->moves;
@@ -61,7 +61,7 @@ int	best_bigger_index_to_move(t_stack **a, t_stack **b, t_best *best)
 		return (0);
 	while (best->tmp_b)
 	{
-		best = smaller_index_for_b(a, &best->tmp_b);
+		best->tmp_a = smaller_index_for_b(a, &best->tmp_b);
 		if (best->tmp_b->moves + best->tmp_a->moves < best->min)
 		{
 			best->min = best->tmp_a->moves + best->tmp_b->moves;

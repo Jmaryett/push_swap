@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:47:58 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/03 21:30:34 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/03 22:14:36 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 //we do this for each element in stack
 // b and choose the one with least moves and move it to a
 
-static void	init_mv_in_b(t_stack **st)
+void	init_mv_in_b(t_stack **st)
 {
 	int		len;
 	int		i;
@@ -79,7 +79,7 @@ t_stack	*needed_elem_in_a(t_stack **a, t_stack **b)
 	t_stack	*tmp_a;
 	int		count;
 
-	if (!a || !*a || !b || !*b)
+	if (!a || !b)
 		return (NULL);
 	tmp_a = *a;
 	needed = tmp_a;
@@ -142,6 +142,7 @@ static int	calculate_moves(t_stack **a, t_stack **b, t_best *best)
 			best->tmp_b = best->tmp_b->next;
 	}
 	best->elem_mv->best_to_move_to_a = 1;
+	printf("index is %d, it's index in a is %d\n", best->elem_mv->index, best->tmp_a->index);
 	return (1);
 }
 

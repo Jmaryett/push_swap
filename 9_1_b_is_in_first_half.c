@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 20:32:51 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/03 21:16:25 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/03 21:44:22 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	check_if_a_elem_is_last(t_stack *tmp_a, t_stack **a, t_stack **b)
 	a_new = *a;
 	while (a_new->next)
 		a_new = a_new->next;
-	if (a_new->next = tmp_a)
+	if (a_new->next == tmp_a)
 	{
 		push_b_up(b, a);
 		return (1);

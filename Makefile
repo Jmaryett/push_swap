@@ -22,10 +22,10 @@ SRCS	= main.c \
 		8_1_finding_if_rr.c \
 		8_2_finding_if_rrr.c \
 		8_3_rotating_a.c \
-		9_only_big_ind_left \
-		9_0_recalculate_moves_for_a \
-		9_1_b_is_in_first_half \
-		9_2_b_is_in_second_half \
+		9_only_big_ind_left.c \
+		9_0_recalculate_moves_for_a.c \
+		9_1_b_is_in_first_half.c \
+		9_2_b_is_in_second_half.c \
 		./commands/push.c \
 		./commands/rotate.c \
 		./commands/reverse_rotate.c \
