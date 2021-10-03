@@ -103,4 +103,15 @@ void	push_a_down(t_stack **a, t_stack *tmp_a);
 
 void	push_b_to_a(t_stack **a, t_stack **b);
 
+//if only big index left
+
+void	only_big_index_left(t_stack **a, t_stack **b, t_best *best);
+void	reinit_mv_in_a(t_stack **st);
+int		best_bigger_index_to_move(t_stack **a, t_stack **b, t_best *best);
+int		init_first_best_bigger_ind_to_move(t_best *best, t_stack **b, t_stack **a);
+t_stack	*smaller_index_for_b(t_stack **a, t_stack **b);
+void	rotating_b_and_a_with_big_ind(t_stack **b, t_stack **a);
+void	where_is_b(int len, t_stack *tmp, t_stack **a, t_stack **b);
+void	check_rrr(t_stack *tmp_b, t_stack **a, t_stack **b);
+
 #	endif

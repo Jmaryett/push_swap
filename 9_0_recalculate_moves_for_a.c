@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   7_add_func.c                                       :+:      :+:    :+:   */
+/*   9_0_recalculate_moves_for_a.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/30 17:47:51 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/03 20:25:46 by jmaryett         ###   ########.fr       */
+/*   Created: 2021/10/03 21:21:23 by jmaryett          #+#    #+#             */
+/*   Updated: 2021/10/03 21:28:10 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	even_init_mv_in_b(t_stack **st)
+static void	even_reinit_mv_in_a(t_stack **st)
 {
 	int		len;
 	int		i;
@@ -21,27 +21,21 @@ void	even_init_mv_in_b(t_stack **st)
 	i = 1;
 	len = lstsize(*st);
 	tmp = *st;
-	if (len == 2)
-	{
-		tmp->moves = 1;
-		tmp->next->moves = 2;
-		return ;
-	}
-	while (i <= len / 2)
+	while (i < len / 2)
 	{
 		tmp->moves = i;
 		tmp = tmp->next;
 		i++;
 	}
-	while (i >= 2 && tmp)
+	while (i >= 0 && tmp)
 	{
+		i--;
 		tmp->moves = i;
 		tmp = tmp->next;
-		i--;
 	}
 }
 
-void	even_init_mv_in_a(t_stack **st)
+void	reinit_mv_in_a(t_stack **st)
 {
 	int		len;
 	int		i;
@@ -49,29 +43,22 @@ void	even_init_mv_in_a(t_stack **st)
 
 	i = 1;
 	len = lstsize(*st);
-	tmp = (*st)->next;
-	while (i < len / 2)
+	tmp = *st;
+	if (len % 2 == 0)
+		even_reinit_mv_in_a(st);
+	else
 	{
-		tmp->moves = i;
-		tmp = tmp->next;
-		i++;
+		while (i <= len / 2)
+		{
+			tmp->moves = i;
+			tmp = tmp->next;
+			i++;
+		}
+		while (i > 0 && tmp)
+		{
+			tmp->moves = i;
+			tmp = tmp->next;
+			i--;
+		}
 	}
-	while (i >= 1 && tmp)
-	{
-		tmp->moves = i;
-		tmp = tmp->next;
-		i--;
-	}
-}
-
-int	init_first_best_elem(t_best *best, t_stack **b, t_stack **a)
-{
-	best->tmp_b = *b;
-	best->tmp_a = needed_elem_in_a(a, &best->tmp_b);
-	if (!best->tmp_a)
-		return (0);
-	best->min = best->tmp_b->moves + best->tmp_a->moves;
-	best->elem_mv = best->tmp_b;
-	best->tmp_b = best->tmp_b->next;
-	return (1);
 }

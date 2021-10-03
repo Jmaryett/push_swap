@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   10_2_finding_if_rrr.c                              :+:      :+:    :+:   */
+/*   8_2_finding_if_rrr.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:48:14 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/09/30 20:31:51 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/03 21:11:26 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	a_up_b_down(t_stack **a, t_stack **b)
+static void	a_up_b_down(t_stack **a, t_stack **b, t_stack *tmp_a)
 {
-	rotating_a(a,*b);
+	//rotating_a(a,*b);
+	while (*a != tmp_a)
+	{
+		rotate(a);
+		write(1, "ra\n", 3);
+	}
 	push_b_down(b, a);
 	return ;
 }
@@ -61,7 +66,7 @@ static void	a_in_first_half(t_stack **a, t_stack **b,
 	{
 		if (a_tmp == tmp_a)
 		{
-			a_up_b_down(a, b);
+			a_up_b_down(a, b, tmp_a);
 			return ;
 		}
 		a_tmp = a_tmp->next;
