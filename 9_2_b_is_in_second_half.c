@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 20:54:14 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/04 19:13:28 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/04 19:21:43 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,20 +97,21 @@ void	check_rrr(t_stack *tmp_b, t_stack **a, t_stack **b)
 
 	//wrong condition if a is in second half or in first
 	tmp_a = smaller_index_for_b(a, &tmp_b);
-	len = lstsize(*a);
+	len = lstsize(*a) / 2;
 	a_tmp = *a;
 	if (check_if_a_elem_last(tmp_a, a, b))
 		return ;
-	while (len > len / 2)
+	while (len >= 0)
 	{
 		if (a_tmp == tmp_a)
 		{
-			make_rrr(a, b, tmp_a, tmp_b);
-			push_b_to_a(a, b);
+			a_is_in_first_half(a, b, a_tmp, tmp_a);
 			return ;
 		}
 		a_tmp = a_tmp->next;
 		len--;
 	}
-	a_is_in_first_half(a, b, a_tmp, tmp_a);
+	make_rrr(a, b, tmp_a, tmp_b);
+	push_b_to_a(a, b);
+	return ;
 }
