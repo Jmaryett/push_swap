@@ -1,6 +1,37 @@
 #include "push_swap.h"
 
-void	rotating_b_and_a_with_big_ind(t_stack **b, t_stack **a)
+//1 is a is in first half (ra), 0 is in the second half (rra)
+void	where_is_b(int len, t_stack **b, t_best *best)
+{
+	t_stack	*b_new;
+
+	b_new = *b;
+	while (len >= 0 && b_new)
+	{
+		if (a_new == best->tmp_a)
+			return (1);
+		a_new = a_new->next;
+	}
+	return (0);
+}
+
+//1 is a is in first half (ra), 0 is in the second half (rra)
+void	where_is_a(int len, t_stack **a, t_best *best)
+{
+	t_stack	*a_new;
+
+	a_new = *a;
+	while (len >= 0 && a_new)
+	{
+		if (a_new == best->tmp_a)
+			return (1);
+		a_new = a_new->next;
+	}
+	return (0);
+}
+
+
+void	rotating_b_and_a_with_big_ind(t_stack **b, t_stack **a, t_best *best)
 {
 	int		len;
 	t_stack	*tmp;
@@ -8,6 +39,7 @@ void	rotating_b_and_a_with_big_ind(t_stack **b, t_stack **a)
 	len = lstsize(*b) / 2;
 	tmp = *b;
 	where_is_b(len, tmp, a, b);
+	where_is_a(len, a, best);
 }
 
 //here i find suitable index from a to left big index in b
@@ -95,7 +127,7 @@ void	only_big_index_left(t_stack **a, t_stack **b, t_best *best)
 		init_mv_in_b(b);
 		if (!best_bigger_index_to_move(a, b, best))
 			return ;
-		rotating_b_and_a_with_big_ind(b, a);
+		rotating_b_and_a_with_big_ind(b, a, best);
 		init_moves(a, b);
 	}
 }
