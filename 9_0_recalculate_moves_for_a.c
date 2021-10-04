@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 21:21:23 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/03 21:28:10 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/04 17:39:45 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static void	even_reinit_mv_in_a(t_stack **st)
 	}
 	while (i >= 0 && tmp)
 	{
-		i--;
 		tmp->moves = i;
 		tmp = tmp->next;
+		i--;
 	}
 }
 
@@ -56,9 +56,9 @@ void	reinit_mv_in_a(t_stack **st)
 		}
 		while (i > 0 && tmp)
 		{
+			i--;
 			tmp->moves = i;
 			tmp = tmp->next;
-			i--;
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:47:58 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/04 17:04:24 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/04 18:04:39 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ void	from_b_to_a(t_stack **stack_b, t_stack **stack_a)
 		init_mv_in_a(stack_a);
 		init_mv_in_b(stack_b);
 		if (!calculate_moves(stack_a, stack_b, &best))
-			return ;
+			continue ;
 		rotating_b_and_a(stack_b, stack_a);
 		init_moves(stack_a, stack_b);
 	}

@@ -25,7 +25,12 @@ t_stack	*smaller_index_for_b(t_stack **a, t_stack **b)
 	needed = tmp_a;
 	while (tmp_a)
 	{
-		if ((*b)->index - tmp_a->index < (*b)->index - needed->index)
+		if (tmp_a->index > (*b)->index)
+			tmp_a = tmp_a->next;
+		else if ((*b)->index - tmp_a->index < 0 || (*b)->index - needed->index < 0)
+			needed = tmp_a->next;
+		else if ((*b)->index - tmp_a->index < (*b)->index - needed->index ||
+			(*b)->index - tmp_a->index == (*b)->index - needed->index)
 		{
 			needed = tmp_a;
 			tmp_a = tmp_a->next;
@@ -71,6 +76,7 @@ int	best_bigger_index_to_move(t_stack **a, t_stack **b, t_best *best)
 		{
 			if (best->tmp_b->index < best->elem_mv->index)
 				best->elem_mv = best->tmp_b;
+			best->tmp_b = best->tmp_b->next;
 		}
 		else
 			best->tmp_b = best->tmp_b->next;

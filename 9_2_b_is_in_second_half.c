@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 20:54:14 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/03 21:44:41 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/04 19:13:28 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void	check_rrr(t_stack *tmp_b, t_stack **a, t_stack **b)
 	t_stack	*tmp_a;
 	int		len;
 
+	//wrong condition if a is in second half or in first
 	tmp_a = smaller_index_for_b(a, &tmp_b);
 	len = lstsize(*a);
 	a_tmp = *a;
