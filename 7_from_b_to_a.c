@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:47:58 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/03 22:14:36 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/04 17:04:24 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,9 @@ t_stack	*needed_elem_in_a(t_stack **a, t_stack **b)
 
 static int	calculate_moves(t_stack **a, t_stack **b, t_best *best)
 {
-	t_stack	*tmp_b = *b;
-
+	t_stack	*tmp_b;
+	
+	tmp_b = *b;
 	while (tmp_b)
 	{
 		if (!(init_first_best_elem(best, b, a)))

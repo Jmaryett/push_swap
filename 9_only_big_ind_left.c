@@ -81,7 +81,7 @@ int	best_bigger_index_to_move(t_stack **a, t_stack **b, t_best *best)
 
 void	only_big_index_left(t_stack **a, t_stack **b, t_best *best)
 {
-	if (!*a || !*b || !a || *b)
+	if (!a || !b)
 		return ;
 	while (*b)
 	{
