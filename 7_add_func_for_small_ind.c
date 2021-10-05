@@ -75,3 +75,9 @@ int	init_first_best_elem(t_best *best, t_stack **b, t_stack **a)
 	best->tmp_b = best->tmp_b->next;
 	return (1);
 }
+
+void	push_b_to_a(t_stack **a, t_stack **b)
+{
+	push(b, a);
+	write (1, "pa\n", 3);
+}

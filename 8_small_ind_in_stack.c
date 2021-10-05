@@ -12,6 +12,36 @@
 
 #include "push_swap.h"
 
+//1 is a is in first half (ra), 0 is in the second half (rra)
+int	where_is_b(int len, t_stack **b, t_best *best)
+{
+	t_stack	*b_new;
+
+	b_new = *b;
+	while (len >= 0 && b_new)
+	{
+		if (b_new == best->elem_mv || b_new->best_to_move_to_a == 1)
+			return (1);
+		b_new = b_new->next;
+	}
+	return (0);
+}
+
+//1 is a is in first half (ra), 0 is in the second half (rra)
+int	where_is_a(int len, t_stack **a, t_best *best)
+{
+	t_stack	*a_new;
+
+	a_new = *a;
+	while (len >= 0 && a_new)
+	{
+		if (a_new == best->tmp_a)
+			return (1);
+		a_new = a_new->next;
+	}
+	return (0);
+}
+
 void	push_b_up(t_stack **b, t_stack **a)
 {
 	while ((*b)->best_to_move_to_a != 1)
@@ -34,7 +64,7 @@ void	push_b_down(t_stack **b, t_stack **a)
 	write(1, "pa\n", 3);
 }
 
-static void	where_is_elem_b(int len, t_stack *tmp, t_stack **a, t_stack **b)
+/* static void	where_is_elem_b(int len, t_stack *tmp, t_stack **a, t_stack **b)
 {
 	while (len / 2 > 0)
 	{
@@ -67,4 +97,25 @@ void	rotating_b_and_a(t_stack **b, t_stack **a)
 	len = lstsize(*b) / 2;
 	tmp = *b;
 	where_is_elem_b(len, tmp, a, b);
+} */
+
+void	rotating_b_and_a_with_small_ind(t_stack **b, t_stack **a, t_best *best)
+{
+	int		i_a;
+	int		j_b;
+	int		len;
+	//t_stack	*tmp;
+
+	len = lstsize(*b) / 2;
+	j_b = where_is_b(len, b, best);
+	i_a = where_is_a(len, a, best);
+	if (i_a == 0 && j_b == 0)
+		do_rrr_small(a, b, best);
+	else if (i_a == 1 && j_b == 0)
+		a_up_b_down_small(a, b, best);
+	else if (i_a == 0 && j_b == 1)
+		a_down_b_up_small(a, b, best);
+	else if (i_a == 1 && j_b == 1)
+		do_rr_small(a, b, best);
+	push_b_to_a(a, b);
 }

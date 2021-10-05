@@ -1,22 +1,22 @@
 #include "push_swap.h"
 
-//1 is a is in first half (ra), 0 is in the second half (rra)
-void	where_is_b(int len, t_stack **b, t_best *best)
+/* //1 is a is in first half (ra), 0 is in the second half (rra)
+int	where_is_b(int len, t_stack **b, t_best *best)
 {
 	t_stack	*b_new;
 
 	b_new = *b;
 	while (len >= 0 && b_new)
 	{
-		if (a_new == best->tmp_a)
+		if (b_new == best->elem_mv || b_new->best_to_move_to_a == 1)
 			return (1);
-		a_new = a_new->next;
+		b_new = b_new->next;
 	}
 	return (0);
 }
 
 //1 is a is in first half (ra), 0 is in the second half (rra)
-void	where_is_a(int len, t_stack **a, t_best *best)
+int	where_is_a(int len, t_stack **a, t_best *best)
 {
 	t_stack	*a_new;
 
@@ -28,18 +28,28 @@ void	where_is_a(int len, t_stack **a, t_best *best)
 		a_new = a_new->next;
 	}
 	return (0);
-}
+} */
 
 
 void	rotating_b_and_a_with_big_ind(t_stack **b, t_stack **a, t_best *best)
 {
+	int		i_a;
+	int		j_b;
 	int		len;
-	t_stack	*tmp;
+	//t_stack	*tmp;
 
 	len = lstsize(*b) / 2;
-	tmp = *b;
-	where_is_b(len, tmp, a, b);
-	where_is_a(len, a, best);
+	j_b = where_is_b(len, b, best);
+	i_a = where_is_a(len, a, best);
+	if (i_a == 0 && j_b == 0)
+		do_rrr(a, b, best);
+	else if (i_a == 1 && j_b == 0)
+		a_to_up_b_down(a, b, best);
+	else if (i_a == 0 && j_b == 1)
+		a_to_down_b_up(a, b, best);
+	else if (i_a == 1 && j_b == 1)
+		do_rr(a, b, best);
+	push_b_to_a(a, b);
 }
 
 //here i find suitable index from a to left big index in b

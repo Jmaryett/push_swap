@@ -114,7 +114,7 @@ static int	calculate_moves(t_stack **a, t_stack **b, t_best *best)
 	tmp_b = *b;
 	while (tmp_b)
 	{
-		if (!(init_first_best_elem(best, b, a)))
+		if (!(init_first_best_elem(best, &tmp_b, a)))
 			tmp_b = tmp_b->next;
 		else
 			break ;
@@ -160,7 +160,7 @@ void	from_b_to_a(t_stack **stack_b, t_stack **stack_a)
 		init_mv_in_b(stack_b);
 		if (!calculate_moves(stack_a, stack_b, &best))
 			continue ;
-		rotating_b_and_a(stack_b, stack_a);
+		rotating_b_and_a_with_small_ind(stack_b, stack_a, &best);
 		init_moves(stack_a, stack_b);
 	}
 }

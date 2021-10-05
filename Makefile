@@ -17,15 +17,12 @@ SRCS	= main.c \
 		5_init_keep_in_a_greater.c \
 		6_from_a_to_b.c \
 		7_from_b_to_a.c \
-		7_add_func.c \
-		8_0_rotating_b_and_a.c \
-		8_1_finding_if_rr.c \
-		8_2_finding_if_rrr.c \
-		8_3_rotating_a.c \
+		7_add_func_for_small_ind.c \
+		8_0_small_ind_rotate_a_b.c \
+		8_small_ind_in_stack.c \
 		9_only_big_ind_left.c \
-		9_0_recalculate_moves_for_a.c \
-		9_1_b_is_in_first_half.c \
-		9_2_b_is_in_second_half.c \
+		9_0_bigger_ind_recalculate_moves_for_a.c \
+		9_1_bigger_ind_rotate_a_b.c \
 		./commands/push.c \
 		./commands/rotate.c \
 		./commands/reverse_rotate.c \

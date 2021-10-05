@@ -83,6 +83,7 @@ void	sort_a(t_stack **stack_a);
 void	init_moves(t_stack **a, t_stack **b);
 
 //below im starting to push from b to a
+//if there are smaller index for elems in b
 
 void	from_b_to_a(t_stack **stack_b, t_stack **stack_a);
 int		init_first_best_elem(t_best *best, t_stack **b, t_stack **a);
@@ -91,18 +92,24 @@ void	init_mv_in_b(t_stack **st);
 void	even_init_mv_in_b(t_stack **st);
 void	even_init_mv_in_a(t_stack **st);
 t_stack	*best_elem_in_b(t_stack *tmp_b, t_stack *tmp_a, t_stack **a, int min);
+void	rotating_b_and_a_with_small_ind(t_stack **b, t_stack **a, t_best *best);
+//void	rotating_b_and_a(t_stack **b, t_stack **a);
+//void	finding_if_rr(t_stack *tmp_b, t_stack **a, t_stack **b);
+//void	finding_if_rrr(t_stack *tmp_b, t_stack **a, t_stack **b);
 
-void	rotating_b_and_a(t_stack **b, t_stack **a);
-void	finding_if_rr(t_stack *tmp_b, t_stack **a, t_stack **b);
-void	finding_if_rrr(t_stack *tmp_b, t_stack **a, t_stack **b);
+int	where_is_b(int len, t_stack **b, t_best *best);
+int	where_is_a(int len, t_stack **a, t_best *best);
 
 void	push_b_up(t_stack **b, t_stack **a);
 void	push_b_down(t_stack **b, t_stack **a);
-void	rotating_a(t_stack **a, t_stack *b);
-void	push_a_up(t_stack **a, t_stack *tmp_a);
-void	push_a_down(t_stack **a, t_stack *tmp_a);
-
+void	a_up_b_down_small(t_stack **a, t_stack **b, t_best *best);
+//void	rotating_a(t_stack **a, t_stack *b);
+//void	push_a_up(t_stack **a, t_stack *tmp_a);
+//void	push_a_down(t_stack **a, t_stack *tmp_a);
+void	a_down_b_up_small(t_stack **a, t_stack **b, t_best *best);
 void	push_b_to_a(t_stack **a, t_stack **b);
+void	do_rrr_small(t_stack **a, t_stack **b, t_best *best);
+void	do_rr_small(t_stack **a, t_stack **b, t_best *best);
 
 //if only big index left
 
@@ -111,8 +118,14 @@ void	reinit_mv_in_a(t_stack **st);
 int		best_bigger_index_to_move(t_stack **a, t_stack **b, t_best *best);
 int		init_first_best_bigger_ind_to_move(t_best *best, t_stack **b, t_stack **a);
 t_stack	*smaller_index_for_b(t_stack **a, t_stack **b);
-void	rotating_b_and_a_with_big_ind(t_stack **b, t_stack **a);
-void	where_is_b(int len, t_stack *tmp, t_stack **a, t_stack **b);
-void	check_rrr(t_stack *tmp_b, t_stack **a, t_stack **b);
+void	do_rrr(t_stack **a, t_stack **b, t_best *best);
+void	do_rr(t_stack **a, t_stack **b, t_best *best);
+void	a_to_down_b_up(t_stack **a, t_stack **b, t_best *best);
+void	a_to_up_b_down(t_stack **a, t_stack **b, t_best *best);
+
+
+//void	rotating_b_and_a_with_big_ind(t_stack **b, t_stack **a);
+//void	where_is_b(int len, t_stack *tmp, t_stack **a, t_stack **b);
+//void	check_rrr(t_stack *tmp_b, t_stack **a, t_stack **b);
 
 #	endif

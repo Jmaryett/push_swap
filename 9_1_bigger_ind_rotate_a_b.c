@@ -12,11 +12,11 @@
 
 #include "push_swap.h"
 
-static void	a_to_up_b_down(t_stack **a, t_stack **b, t_stack *tmp_a)
+void	a_to_up_b_down(t_stack **a, t_stack **b, t_best *best)
 {
 	t_stack	*first_should_be;
 
-	first_should_be = tmp_a->next;
+	first_should_be = best->tmp_a->next;
 	while (*a != first_should_be)
 	{
 		rotate(a);
@@ -26,7 +26,21 @@ static void	a_to_up_b_down(t_stack **a, t_stack **b, t_stack *tmp_a)
 	return ;
 }
 
-static void	a_is_in_first_half(t_stack **a, t_stack **b,
+void	a_to_down_b_up(t_stack **a, t_stack **b, t_best *best)
+{
+	t_stack	*first_should_be;
+
+	first_should_be = best->tmp_a->next;
+	while (*a != first_should_be)
+	{
+		reverse_rotate(a);
+		write(1, "rra\n", 4);
+	}
+	push_b_up(b, a);
+	return ;
+}
+
+/* static void	a_is_in_first_half(t_stack **a, t_stack **b,
 							t_stack *a_tmp, t_stack *tmp_a)
 {
 	int	len;
@@ -114,4 +128,66 @@ void	check_rrr(t_stack *tmp_b, t_stack **a, t_stack **b)
 	make_rrr(a, b, tmp_a, tmp_b);
 	push_b_to_a(a, b);
 	return ;
+} */
+
+void	do_rr(t_stack **a, t_stack **b, t_best *best)
+{
+	if (best->tmp_a->moves == 0)
+		push_b_up(b, a);
+	else
+	{
+		while (*a != best->tmp_a->next && *b != best->elem_mv) //b->best_to_move != 1
+		{
+			rotate(a);
+			rotate(b);
+			write (1, "rr\n", 3);
+		}
+		if (*a != best->tmp_a->next)
+		{
+			while (*a != best->tmp_a->next)
+			{
+				rotate(a);
+				write (1, "ra\n", 3);
+			}
+		}
+		else if (*b != best->elem_mv)
+		{
+			while (*b != best->elem_mv)
+			{
+				rotate(b);
+				write (1, "rb\n", 3);
+			}
+		}
+	}
+}
+
+void	do_rrr(t_stack **a, t_stack **b, t_best *best)
+{
+	if (best->tmp_a->moves == 0)
+		push_b_down(b, a);
+	else
+	{
+		while (*a != best->tmp_a->next && *b != best->elem_mv) //b->best_to_move != 1
+		{
+			reverse_rotate(a);
+			reverse_rotate(b);
+			write (1, "rrr\n", 4);
+		}
+		if (*a != best->tmp_a->next)
+		{
+			while (*a != best->tmp_a->next)
+			{
+				reverse_rotate(a);
+				write (1, "rra\n", 4);
+			}
+		}
+		else if (*b != best->elem_mv)
+		{
+			while (*b != best->elem_mv)
+			{
+				reverse_rotate(b);
+				write (1, "rrb\n", 4);
+			}
+		}
+	}
 }
