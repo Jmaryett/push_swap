@@ -77,11 +77,11 @@ static void	starting_to_push(t_stack **stack_a)
 	from_b_to_a(&stack_b, stack_a);
 	free_memory_lst(stack_b);
 	sort_a(stack_a);
- 	while (*stack_a)
+/*  	while (*stack_a)
 	{
 		printf("%d\n", (*stack_a)->index);
 		*stack_a = (*stack_a)->next;
-	}
+	} */
 /* 	printf("\n");
 	while (stack_b)
 	{
