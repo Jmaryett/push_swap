@@ -18,11 +18,12 @@ int	where_is_b(int len, t_stack **b, t_best *best)
 	t_stack	*b_new;
 
 	b_new = *b;
-	while (len >= 0 && b_new)
+	while (len > 0 && b_new)
 	{
 		if (b_new == best->elem_mv || b_new->best_to_move_to_a == 1)
 			return (1);
 		b_new = b_new->next;
+		len--;
 	}
 	return (0);
 }
@@ -33,11 +34,12 @@ int	where_is_a(int len, t_stack **a, t_best *best)
 	t_stack	*a_new;
 
 	a_new = *a;
-	while (len >= 0 && a_new)
+	while (len > 0 && a_new)
 	{
 		if (a_new == best->tmp_a)
 			return (1);
 		a_new = a_new->next;
+		len--;
 	}
 	return (0);
 }
