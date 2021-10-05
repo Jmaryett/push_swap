@@ -100,8 +100,8 @@ void	rotating_b_and_a_with_small_ind(t_stack **b, t_stack **a, t_best *best);
 int	where_is_b(int len, t_stack **b, t_best *best);
 int	where_is_a(int len, t_stack **a, t_best *best);
 
-void	push_b_up(t_stack **b, t_stack **a);
-void	push_b_down(t_stack **b, t_stack **a);
+void	push_b_up(t_stack **b/* , t_stack **a */);
+void	push_b_down(t_stack **b/* , t_stack **a */);
 void	a_up_b_down_small(t_stack **a, t_stack **b, t_best *best);
 //void	rotating_a(t_stack **a, t_stack *b);
 //void	push_a_up(t_stack **a, t_stack *tmp_a);

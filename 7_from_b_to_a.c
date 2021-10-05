@@ -88,7 +88,10 @@ t_stack	*needed_elem_in_a(t_stack **a, t_stack **b)
 	{
 		if (tmp_a->index < (*b)->index)
 			tmp_a = tmp_a->next;
-		else if (tmp_a->index - (*b)->index < needed->index - (*b)->index)
+		else if (tmp_a->index - (*b)->index < 0 || needed->index - (*b)->index < 0)
+			needed = tmp_a->next;
+		else if (tmp_a->index - (*b)->index < needed->index - (*b)->index ||
+				tmp_a->index - (*b)->index == needed->index - (*b)->index)
 		{
 			needed = tmp_a;
 			tmp_a = tmp_a->next;
@@ -138,12 +141,14 @@ static int	calculate_moves(t_stack **a, t_stack **b, t_best *best)
 		{
 			if (best->tmp_b->index < best->elem_mv->index)
 				best->elem_mv = best->tmp_b;
+			best->tmp_b = best->tmp_b->next;
 		}
 		else
 			best->tmp_b = best->tmp_b->next;
 	}
 	best->elem_mv->best_to_move_to_a = 1;
-	printf("index is %d, it's index in a is %d\n", best->elem_mv->index, best->tmp_a->index);
+	best->tmp_a = needed_elem_in_a(a, &best->elem_mv);
+	//printf("index is %d, it's index in a is %d\n", best->elem_mv->index, best->tmp_a->index);
 	return (1);
 }
 

@@ -126,6 +126,7 @@ int	best_bigger_index_to_move(t_stack **a, t_stack **b, t_best *best)
 			best->tmp_b = best->tmp_b->next;
 	}
 	best->elem_mv->best_to_move_to_a = 1;
+	best->tmp_a = smaller_index_for_b(a, &best->elem_mv);
 	return (1);
 }
 

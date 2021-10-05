@@ -17,12 +17,17 @@ void	a_to_up_b_down(t_stack **a, t_stack **b, t_best *best)
 	t_stack	*first_should_be;
 
 	first_should_be = best->tmp_a->next;
+	if (best->tmp_a->moves == 0)
+	{
+		push_b_down(b);
+		return ;
+	}
 	while (*a != first_should_be)
 	{
 		rotate(a);
 		write(1, "ra\n", 3);
 	}
-	push_b_down(b, a);
+	push_b_down(b/* , a */);
 	return ;
 }
 
@@ -31,12 +36,17 @@ void	a_to_down_b_up(t_stack **a, t_stack **b, t_best *best)
 	t_stack	*first_should_be;
 
 	first_should_be = best->tmp_a->next;
+	if (best->tmp_a->moves == 0)
+	{
+		push_b_up(b);
+		return ;
+	}
 	while (*a != first_should_be)
 	{
 		reverse_rotate(a);
 		write(1, "rra\n", 4);
 	}
-	push_b_up(b, a);
+	push_b_up(b/* , a */);
 	return ;
 }
 
@@ -132,19 +142,22 @@ void	check_rrr(t_stack *tmp_b, t_stack **a, t_stack **b)
 
 void	do_rr(t_stack **a, t_stack **b, t_best *best)
 {
+	t_stack	*first_should_be;
+
+	first_should_be = best->tmp_a->next;
 	if (best->tmp_a->moves == 0)
-		push_b_up(b, a);
+		push_b_up(b/* , a */);
 	else
 	{
-		while (*a != best->tmp_a->next && *b != best->elem_mv) //b->best_to_move != 1
+		while (*a != first_should_be && *b != best->elem_mv) //b->best_to_move != 1
 		{
 			rotate(a);
 			rotate(b);
 			write (1, "rr\n", 3);
 		}
-		if (*a != best->tmp_a->next)
+		if (*a != first_should_be)
 		{
-			while (*a != best->tmp_a->next)
+			while (*a != first_should_be)
 			{
 				rotate(a);
 				write (1, "ra\n", 3);
@@ -163,19 +176,22 @@ void	do_rr(t_stack **a, t_stack **b, t_best *best)
 
 void	do_rrr(t_stack **a, t_stack **b, t_best *best)
 {
+	t_stack	*first_should_be;
+
+	first_should_be = best->tmp_a->next;
 	if (best->tmp_a->moves == 0)
-		push_b_down(b, a);
+		push_b_down(b/* , a */);
 	else
 	{
-		while (*a != best->tmp_a->next && *b != best->elem_mv) //b->best_to_move != 1
+		while (*a != first_should_be && *b != best->elem_mv) //b->best_to_move != 1
 		{
 			reverse_rotate(a);
 			reverse_rotate(b);
 			write (1, "rrr\n", 4);
 		}
-		if (*a != best->tmp_a->next)
+		if (*a != first_should_be)
 		{
-			while (*a != best->tmp_a->next)
+			while (*a != first_should_be)
 			{
 				reverse_rotate(a);
 				write (1, "rra\n", 4);

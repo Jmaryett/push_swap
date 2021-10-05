@@ -44,26 +44,26 @@ int	where_is_a(int len, t_stack **a, t_best *best)
 	return (0);
 }
 
-void	push_b_up(t_stack **b, t_stack **a)
+void	push_b_up(t_stack **b/* , t_stack **a */)
 {
 	while ((*b)->best_to_move_to_a != 1)
 	{
 		rotate(b);
 		write(1, "rb\n", 3);
 	}
-	push(b, a);
-	write(1, "pa\n", 3);
+	//push(b, a);
+	//write(1, "pa\n", 3);
 }
 
-void	push_b_down(t_stack **b, t_stack **a)
+void	push_b_down(t_stack **b/* , t_stack **a */)
 {
 	while ((*b)->best_to_move_to_a != 1)
 	{
 		reverse_rotate(b);
 		write(1, "rrb\n", 4);
 	}
-	push(b, a);
-	write(1, "pa\n", 3);
+	//push(b, a);
+	//write(1, "pa\n", 3);
 }
 
 /* static void	where_is_elem_b(int len, t_stack *tmp, t_stack **a, t_stack **b)
