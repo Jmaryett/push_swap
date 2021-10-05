@@ -103,12 +103,14 @@ void	rotating_b_and_a_with_small_ind(t_stack **b, t_stack **a, t_best *best)
 {
 	int		i_a;
 	int		j_b;
-	int		len;
+	int		len_b;
+	int		len_a;
 	//t_stack	*tmp;
 
-	len = lstsize(*b) / 2;
-	j_b = where_is_b(len, b, best);
-	i_a = where_is_a(len, a, best);
+	len_b = lstsize(*b) / 2;
+	len_a = lstsize(*a) / 2;
+	j_b = where_is_b(len_b, b, best);
+	i_a = where_is_a(len_a, a, best);
 	if (i_a == 0 && j_b == 0)
 		do_rrr_small(a, b, best);
 	else if (i_a == 1 && j_b == 0)
