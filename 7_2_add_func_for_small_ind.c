@@ -6,11 +6,28 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:47:51 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/06 20:51:12 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/06 20:52:48 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	where_is_min_ind(t_stack **a, int min)
+{
+	int		len;
+	t_stack	*tmp_a;
+	
+	tmp_a = *a;
+	len = lstsize(*a) / 2;
+	while (len >= 0)
+	{
+		if (tmp_a->index == min)
+			return (1);
+		tmp_a = tmp_a->next;
+		len--;
+	}
+	return (0);
+}
 
 void	init_moves(t_stack **a, t_stack **b)
 {
