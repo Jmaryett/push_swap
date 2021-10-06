@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:48:03 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/06 20:39:02 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/06 21:19:10 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void	rotating_b_and_a_with_small_ind(t_stack **b, t_stack **a, t_best *best)
 	int		j_b;
 	int		len_b;
 	int		len_a;
-	//t_stack	*tmp;
 
 	len_b = lstsize(*b) / 2;
 	len_a = lstsize(*a) / 2;

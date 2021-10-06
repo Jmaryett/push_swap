@@ -56,8 +56,8 @@ void	reverse_rotate(t_stack **stack);
 
 int		error_case(char *s);
 t_stack	*parse_and_validate_input(int ac, char **av);
-int	add_arguments_to_stack(t_stack **data_stack, char **arguments);
-int	validate_arguments(char **arguments);
+int		add_arguments_to_stack(t_stack **data_stack, char **arguments);
+int		validate_arguments(char **arguments);
 
 void	indexation(t_stack **begin);
 
@@ -80,7 +80,7 @@ int		init_keep_in_a(t_stack **stack_a, t_stack *m_h, t_count *count);
 
 t_stack	*from_a_to_b(t_stack **stack_a, t_stack **stack_b, t_count *count);
 void	sort_a(t_stack **stack_a);
-int	where_is_min_ind(t_stack **a, int min);
+int		where_is_min_ind(t_stack **a, int min);
 void	init_moves(t_stack **a, t_stack **b);
 
 //below im starting to push from b to a
@@ -99,11 +99,11 @@ t_stack	*best_elem_in_b(t_stack *tmp_b, t_stack *tmp_a, t_stack **a, int min);
 
 void	rotating_b_and_a_with_small_ind(t_stack **b, t_stack **a, t_best *best);
 
-int	where_is_b(int len, t_stack **b, t_best *best);
-int	where_is_a(int len, t_stack **a, t_best *best);
+int		where_is_b(int len, t_stack **b, t_best *best);
+int		where_is_a(int len, t_stack **a, t_best *best);
 
-void	push_b_up(t_stack **b/* , t_stack **a */);
-void	push_b_down(t_stack **b/* , t_stack **a */);
+void	push_b_up(t_stack **b);
+void	push_b_down(t_stack **b);
 void	a_up_b_down_small(t_stack **a, t_stack **b, t_best *best);
 void	a_down_b_up_small(t_stack **a, t_stack **b, t_best *best);
 
@@ -119,8 +119,11 @@ void	only_big_index_left(t_stack **a, t_stack **b, t_best *best);
 void	reinit_mv_in_a(t_stack **st);
 
 int		best_bigger_index_to_move(t_stack **a, t_stack **b, t_best *best);
-int		init_first_best_bigger_ind_to_move(t_best *best, t_stack **b, t_stack **a);
+int		init_first_best_bigger_ind_to_move(t_best *best,
+			t_stack **b, t_stack **a);
 t_stack	*smaller_index_for_b(t_stack **a, t_stack **b);
+
+void	rotating_b_and_a_with_big_ind(t_stack **b, t_stack **a, t_best *best);
 
 void	do_rrr(t_stack **a, t_stack **b, t_best *best);
 void	do_rr(t_stack **a, t_stack **b, t_best *best);

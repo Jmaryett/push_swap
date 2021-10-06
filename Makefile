@@ -26,7 +26,9 @@ SRCS	= main.c \
 		8_1_small_ind_a_b_in_diff_halfs.c \
 		9_only_big_ind_left.c \
 		9_0_bigger_ind_recalculate_moves_for_a.c \
-		9_1_bigger_ind_rotate_a_b.c \
+		9_1_big_ind_rr_rrr.c \
+		9_2_big_ind_a_b_in_diff_halfs.c \
+		9_3_add_func_big_ind.c \
 		./commands/push.c \
 		./commands/rotate.c \
 		./commands/reverse_rotate.c \

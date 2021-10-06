@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:47:51 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/06 20:52:48 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/06 21:18:42 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	where_is_min_ind(t_stack **a, int min)
 {
 	int		len;
 	t_stack	*tmp_a;
-	
+
 	tmp_a = *a;
 	len = lstsize(*a) / 2;
 	while (len >= 0)
