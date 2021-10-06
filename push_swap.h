@@ -80,6 +80,7 @@ int		init_keep_in_a(t_stack **stack_a, t_stack *m_h, t_count *count);
 
 t_stack	*from_a_to_b(t_stack **stack_a, t_stack **stack_b, t_count *count);
 void	sort_a(t_stack **stack_a);
+int	where_is_min_ind(t_stack **a, int min);
 void	init_moves(t_stack **a, t_stack **b);
 
 //below im starting to push from b to a

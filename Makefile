@@ -18,10 +18,12 @@ SRCS	= main.c \
 		4_markups_greater.c \
 		5_init_keep_in_a_greater.c \
 		6_from_a_to_b.c \
-		7_from_b_to_a.c \
-		7_add_func_for_small_ind.c \
-		8_0_small_ind_rotate_a_b.c \
+		7_0_from_b_to_a.c \
+		7_1_small_ind_calculate.c \
+		7_2_add_func_for_small_ind.c \
 		8_small_ind_in_stack.c \
+		8_0_small_ind_rr_rrr.c \
+		8_1_small_ind_a_b_in_diff_halfs.c \
 		9_only_big_ind_left.c \
 		9_0_bigger_ind_recalculate_moves_for_a.c \
 		9_1_bigger_ind_rotate_a_b.c \
