@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 17:55:35 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/01 19:25:17 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/06 19:20:40 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 //создаем массив для аргументов, кторые возвращаются из сплита
 //проверяем их на содержание только чисел и минуса в начале(validate arguments)
 //затем превращаем в число, проверяем на мин и макс, и помещаем в стек
-//если при валидации или перемещении возникла ошибка - чистим массив и возвр ошибку
+//если при валидации или перемещении возникла 
+//ошибка - чистим массив и возвр ошибку
 
 static void	parse_and_validate_argument(t_stack **data_stack, char *argument)
 {
@@ -47,13 +48,12 @@ static t_stack	*fill_with_numbers(int number_arguments, char **argument)
 //проверяем, отсортирован ли стек и есть в нем дупликаты
 //1 это отсортирован, 0-нет; по умолчанию задаем значение 1
 
-static int	check_duplicats_and_is_sorted(t_stack *data_stack, int is_array_sorted)
+static int	check_duplicats_and_is_sorted(t_stack *data_stack,
+										int is_array_sorted)
 {
 	t_stack	*tmp;
 	t_stack	*tmp_next;
-/* 	int		is_array_sorted;
 
-	is_array_sorted = 1; */
 	tmp = data_stack;
 	while (tmp)
 	{
@@ -65,7 +65,7 @@ static int	check_duplicats_and_is_sorted(t_stack *data_stack, int is_array_sorte
 				write(1, "Error\nStuck has duplicates\n", 28);
 				return (-1);
 			}
-			if (tmp->number >= tmp_next->number) //почему больше или равно, может просто больше?
+			if (tmp->number >= tmp_next->number)
 				is_array_sorted = 0;
 			tmp_next = tmp_next->next;
 		}
@@ -84,7 +84,8 @@ static int	validate_stack(t_stack *data_stack)
 	is_array_sorted = 1;
 	if (lstsize(data_stack) < 2)
 		exit(1);
-	is_array_sorted = check_duplicats_and_is_sorted(data_stack, is_array_sorted);
+	is_array_sorted = check_duplicats_and_is_sorted(data_stack,
+			is_array_sorted);
 	if (is_array_sorted == -1)
 		exit (1);
 	return (1);

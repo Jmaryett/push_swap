@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:48:41 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/04 17:00:30 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/06 19:18:14 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,21 +73,9 @@ static void	starting_to_push(t_stack **stack_a)
 	if (!stack_b)
 		b_is_empty(stack_a);
 	init_moves(stack_a, &stack_b);
-	//sort_a(stack_a);
 	from_b_to_a(&stack_b, stack_a);
 	free_memory_lst(stack_b);
 	sort_a(stack_a);
-/*  	while (*stack_a)
-	{
-		printf("%d\n", (*stack_a)->index);
-		*stack_a = (*stack_a)->next;
-	} */
-/* 	printf("\n");
-	while (stack_b)
-	{
-		printf("%d\n", stack_b->index);
-		stack_b = stack_b->next;
-	} */
 	return ;
 }
 

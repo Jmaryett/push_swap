@@ -1,5 +1,7 @@
 LIBFT_C = ./libft/*.c
 
+LIBFT_H = ./libft/libft.h
+
 LIBA = libft.a
 
 NAME = push_swap
@@ -30,12 +32,12 @@ SRCS	= main.c \
 		error_case.c
 		
 
-SRCS_2	= ./libft/ft_atoi.c \
+#SRCS_2	= ./libft/ft_atoi.c \
 			./libft/ft_split.c
 
 OBJS	= ${SRCS:.c=.o}
 
-OBJS_2	= ${SRCS_2:.c=.o}
+#OBJS_2	= ${SRCS_2:.c=.o}
 
 RM	= rm -rf
 
@@ -52,7 +54,7 @@ all: ${NAME}
 
 compile_libft: ${LIBFT_A}
 
-${LIBA}: ${LIBFT_C}
+${LIBA}: ${LIBFT_C} ${LIBFT_H}
 			cd ./libft; \
 			make; \
 			mv ${LIBA} ../; \
@@ -62,14 +64,14 @@ ${LIBA}: ${LIBFT_C}
 #${NAME}: ${OBJS} ${HEADER}
 #		 ${CC} -g -o ${NAME} ${OBJS} ${LIBA}
 
-${NAME}: ${LIBA} ${HEADER} ${OBJS} ${OBJS_2}
-		${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${OBJS_2} ${LIBA} 
+${NAME}: ${LIBA} ${HEADER} ${OBJS}
+		${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${LIBA} 
 
 norm: ${SRCS} ${LIBFT_C} ${HEADER} ${HEADER_LIBA}
 		norminette ${SRCS} ${LIBFT_C} ${HEADER} ${HEADER_LIBA}
 
 clean:
-		${RM} ${OBJS} ${OBJS_2}
+		${RM} ${OBJS}
 
 fclean:	clean
 		${RM} ${NAME} a.out ${LIBA}

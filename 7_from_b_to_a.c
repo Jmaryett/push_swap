@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:47:58 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/04 18:04:39 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/06 19:45:59 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,11 @@ t_stack	*needed_elem_in_a(t_stack **a, t_stack **b)
 	{
 		if (tmp_a->index < (*b)->index)
 			tmp_a = tmp_a->next;
-		else if (tmp_a->index - (*b)->index < 0 || needed->index - (*b)->index < 0)
+		else if (tmp_a->index - (*b)->index < 0
+			|| needed->index - (*b)->index < 0)
 			needed = tmp_a->next;
-		else if (tmp_a->index - (*b)->index < needed->index - (*b)->index ||
-				tmp_a->index - (*b)->index == needed->index - (*b)->index)
+		else if (tmp_a->index - (*b)->index < needed->index - (*b)->index
+			|| tmp_a->index - (*b)->index == needed->index - (*b)->index)
 		{
 			needed = tmp_a;
 			tmp_a = tmp_a->next;
@@ -113,7 +114,7 @@ t_stack	*needed_elem_in_a(t_stack **a, t_stack **b)
 static int	calculate_moves(t_stack **a, t_stack **b, t_best *best)
 {
 	t_stack	*tmp_b;
-	
+
 	tmp_b = *b;
 	while (tmp_b)
 	{
@@ -148,7 +149,6 @@ static int	calculate_moves(t_stack **a, t_stack **b, t_best *best)
 	}
 	best->elem_mv->best_to_move_to_a = 1;
 	best->tmp_a = needed_elem_in_a(a, &best->elem_mv);
-	//printf("index is %d, it's index in a is %d\n", best->elem_mv->index, best->tmp_a->index);
 	return (1);
 }
 
@@ -160,7 +160,6 @@ void	from_b_to_a(t_stack **stack_b, t_stack **stack_a)
 		return ;
 	while (*stack_b)
 	{
-		//sort_a(stack_a);
 		init_mv_in_a(stack_a);
 		init_mv_in_b(stack_b);
 		if (!calculate_moves(stack_a, stack_b, &best))

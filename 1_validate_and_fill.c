@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 18:31:02 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/01 18:14:01 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/06 19:21:08 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	is_str_digit(char *str)
 	int	i;
 
 	i = 0;
-	if (str[i] == '-'/*  || str[i] == '+' */)
+	if (str[i] == '-')
 		i++;
 	if (!str[i])
 		return (-1);
