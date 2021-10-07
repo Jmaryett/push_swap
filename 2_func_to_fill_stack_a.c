@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:47:04 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/01 18:03:52 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/07 19:38:58 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	free_memory_lst(t_stack *new)
 }
 
 //добавляем число в новый элемент списка
+
 t_stack	*get_lst_new_elem(int n)
 {
 	t_stack	*new;
@@ -76,27 +77,3 @@ int	lstsize(t_stack *begin)
 	}
 	return (len);
 }
-
-/* //creating first elem of the list with the content
-t_stack	*filling_stack_a(char **array, t_stack **begin_list_a)
-{
-	t_stack		*list;
-	t_stack		*new;
-	int			i;
-	int			n;
-
-	if (!array || !*array)
-		return (NULL);
-	list = *begin_list_a;
-	i = 1;
-	while (array[i])
-	{
-		n = ft_atoi(array[i]);
-		new = get_lst_new_elem(n);
-		if (!new)
-			error_case("Error\nCan't allocate memory\n");
-		lstadd_back(&list, new);
-		i++;
-	}
-	return (*begin_list_a);
-} */

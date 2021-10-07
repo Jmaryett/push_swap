@@ -55,7 +55,7 @@ void	reverse_rotate(t_stack **stack);
 
 //validating
 
-int		error_case(char *s);
+int		error_case_for_push(char *s);
 t_stack	*parse_and_validate_input(int ac, char **av);
 int		add_arguments_to_stack(t_stack **data_stack, char **arguments);
 int		validate_arguments(char **arguments);

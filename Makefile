@@ -14,6 +14,8 @@ HEADER_CH = ./bonus/push_swap_bonus.h
 
 HEADER_LIBA = ./libft/libft.h
 
+HEADER_GNL = ./gnl/get_next_line.h
+
 SRCS	= push_swap.c \
 		0_parsing_and_filling_args.c \
 		1_validate_and_fill.c \
@@ -39,7 +41,6 @@ SRCS	= push_swap.c \
 		./commands/swap.c \
 		error_case.c
 		
-
 SRCS_СH	= ./bonus/checker.c \
 		./bonus/check_line_and_stacks.c \
 		0_parsing_and_filling_args.c \
@@ -50,7 +51,9 @@ SRCS_СH	= ./bonus/checker.c \
 		./commands/rotate.c \
 		./commands/reverse_rotate.c \
 		./commands/swap.c \
-		error_case.c
+		error_case.c \
+		./gnl/get_next_line.c \
+		./gnl/get_next_line_utils.c
 
 OBJS	= ${SRCS:.c=.o}
 
@@ -85,7 +88,7 @@ ${NAME}: ${LIBA} ${OBJS} ${HEADER}
 		${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${LIBA} 
 
 
-${NAME_CH}: ${LIBA} ${OBJS_CH} ${HEADER} ${HEADER_CH} 
+${NAME_CH}: ${LIBA} ${OBJS_CH} ${HEADER} ${HEADER_CH} ${HEADER_GNL}
 			${CC} ${CFLAGS} -o ${NAME_CH} ${OBJS_CH} ${LIBA} 
 
 bonus: ${NAME_CH}
@@ -101,4 +104,4 @@ fclean:	clean
 
 re:		fclean all
 
-.PHONY: re clean fclean all compile_libft compile_mlx
+.PHONY: all re clean fclean all compile_libft bonus norm

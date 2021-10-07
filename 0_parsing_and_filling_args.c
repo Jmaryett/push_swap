@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 17:55:35 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/07 18:54:02 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/07 19:38:03 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	parse_and_validate_argument(t_stack **data_stack, char *argument)
 		|| !(add_arguments_to_stack(data_stack, splited_argumets)))
 	{
 		free_array_of_strings(splited_argumets);
-		error_case("Error\nWrong args or can't alloc memory for elem of stack\n");
+		error_case_for_push("Error\nWrong args or can't alloc memory for elem of stack\n");
 	}
 	free_array_of_strings(splited_argumets);
 	return ;

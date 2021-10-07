@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 18:18:49 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/07 18:51:23 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/07 19:56:36 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	check_if_a_is_sorted(t_stack **a)
 {
-	while (*a && (*a)->next)
+	while (*a)
 	{
 		if ((*a)->index < (*a)->next->index)
 			*a = (*a)->next;
@@ -42,22 +42,30 @@ void	check_stacks(t_stack **a, t_stack **b)
 	}
 }
 
-void	add_check_commands(char **line, t_stack **a, t_stack **b)
+void	add_check_commands(char *line, t_stack **a, t_stack **b)
 {
-	if (!ft_strncmp("rb", *line, ft_strlen("sb")))
+	if (ft_strncmp("rb", line, ft_strlen("sb")) == 0)
 		rotate (b);
-	else if (!ft_strncmp("rr", *line, ft_strlen("rr")))
+	else if (ft_strncmp("rr", line, ft_strlen("rr")) == 0)
 	{
 		rotate (a);
 		rotate (b);
 	}
-	else if (!ft_strncmp("rra", *line, ft_strlen("rra")))
+	else if (ft_strncmp("rra", line, ft_strlen("rra") == 0))
 		reverse_rotate (a);
-	else if (!ft_strncmp("rrb", *line, ft_strlen("rrb")))
+	else if (ft_strncmp("rrb", line, ft_strlen("rrb") == 0))
 		reverse_rotate (b);
-	else if (!ft_strncmp("rrr", *line, ft_strlen("rrr")))
+	else if (ft_strncmp("rrr", line, ft_strlen("rrr") == 0))
 	{
 		reverse_rotate (a);
 		reverse_rotate (b);
+	}
+	else if (ft_strlen(line) > 3)
+		error_case_for_push("Error\nWrong instruction.\n");
+	else
+	{
+		free_memory_lst (*a);
+		free_memory_lst (*b);
+		error_case_for_push("Error\nWrong instruction.\n");
 	}
 }

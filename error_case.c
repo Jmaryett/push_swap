@@ -6,13 +6,13 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:48:33 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/01 17:40:35 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/07 19:37:31 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	error_case(char *s)
+int	error_case_for_push(char *s)
 {
 	ft_putstr_fd(s, 1);
 	exit (1);
