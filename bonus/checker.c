@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chudapak <chudapak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:48:41 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/07 20:09:52 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/07 23:30:43 by chudapak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,15 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 
-	stack_a = parse_and_validate_input(argc, argv);
+	stack_a = parse_validate_input(argc, argv);
 	if (!stack_a)
-		exit(1);
+	{
+		ft_putstr_fd("Error\n", 2);
+		return (0);
+	}
+	//проверь отсортирован ли список (напиши свою функцию) если да то выведи ОК если нет то начинай выполнять starting_to_check
+	//и не пихай ебаные exit везде пиздец какой-то
 	starting_to_check(&stack_a);
 	free_memory_lst(stack_a);
-	exit (1);
+	return (0);
 }

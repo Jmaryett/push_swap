@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chudapak <chudapak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 18:28:19 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/07 19:56:56 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/07 22:38:30 by chudapak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@
 
 void	add_check_commands(char *line, t_stack **a, t_stack **b);
 void	check_stacks(t_stack **a, t_stack **b);
+t_stack	*parse_validate_input(int ac, char **av);
 
 #	endif

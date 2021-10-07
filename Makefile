@@ -53,7 +53,8 @@ SRCS_СH	= ./bonus/checker.c \
 		./commands/swap.c \
 		error_case.c \
 		./gnl/get_next_line.c \
-		./gnl/get_next_line_utils.c
+		./gnl/get_next_line_utils.c \
+		./bonus/validation.c
 
 OBJS	= ${SRCS:.c=.o}
 
