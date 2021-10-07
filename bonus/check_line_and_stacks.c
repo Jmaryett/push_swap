@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 18:18:49 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/07 19:56:36 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/07 20:12:17 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,6 @@ void	add_check_commands(char *line, t_stack **a, t_stack **b)
 		reverse_rotate (a);
 		reverse_rotate (b);
 	}
-	else if (ft_strlen(line) > 3)
-		error_case_for_push("Error\nWrong instruction.\n");
 	else
-	{
-		free_memory_lst (*a);
-		free_memory_lst (*b);
 		error_case_for_push("Error\nWrong instruction.\n");
-	}
 }
