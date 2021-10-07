@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:48:41 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/07 20:09:52 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/07 20:38:26 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	check_commands(char *line, t_stack **a, t_stack **b)
 
 static void	check_line(char *line, t_stack **a, t_stack **b)
 {
-	if (ft_strlen(line) > 3 || ft_strlen(line) == 1)
+	if (ft_strlen(line) > 3 || ft_strlen(line) <= 1)
 		error_case_for_push("Error\nWrong instruction.\n");
 	check_commands(line, a, b);
 }

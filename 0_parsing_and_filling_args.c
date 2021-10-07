@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 17:55:35 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/07 19:38:03 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/07 20:37:54 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ static int	check_duplicats_and_is_sorted(t_stack *data_stack,
 }
 
 //проверяем размер стека и дупликаты
+
 static int	validate_stack(t_stack *data_stack)
 {
 	int	is_array_sorted;
