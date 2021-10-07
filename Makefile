@@ -6,17 +6,21 @@ LIBA = libft.a
 
 NAME = push_swap
 
+NAME_CH = checker
+
 HEADER = push_swap.h
+
+HEADER_CH = ./bonus/push_swap_bonus.h
 
 HEADER_LIBA = ./libft/libft.h
 
-SRCS	= main.c \
+SRCS	= push_swap.c \
 		0_parsing_and_filling_args.c \
 		1_validate_and_fill.c \
 		2_func_to_fill_stack_a.c \
 		3_indexation.c \
-		4_markups_greater.c \
-		5_init_keep_in_a_greater.c \
+		4_markups_ind.c \
+		5_init_keep_in_a_ind.c \
 		6_from_a_to_b.c \
 		7_0_from_b_to_a.c \
 		7_1_small_ind_calculate.c \
@@ -36,12 +40,21 @@ SRCS	= main.c \
 		error_case.c
 		
 
-#SRCS_2	= ./libft/ft_atoi.c \
-			./libft/ft_split.c
+SRCS_СH	= ./bonus/checker.c \
+		./bonus/check_line_and_stacks.c \
+		0_parsing_and_filling_args.c \
+		1_validate_and_fill.c \
+		2_func_to_fill_stack_a.c \
+		3_indexation.c \
+		./commands/push.c \
+		./commands/rotate.c \
+		./commands/reverse_rotate.c \
+		./commands/swap.c \
+		error_case.c
 
 OBJS	= ${SRCS:.c=.o}
 
-#OBJS_2	= ${SRCS_2:.c=.o}
+OBJS_CH	= ${SRCS_СH:.c=.o}
 
 RM	= rm -rf
 
@@ -68,17 +81,23 @@ ${LIBA}: ${LIBFT_C} ${LIBFT_H}
 #${NAME}: ${OBJS} ${HEADER}
 #		 ${CC} -g -o ${NAME} ${OBJS} ${LIBA}
 
-${NAME}: ${LIBA} ${HEADER} ${OBJS}
+${NAME}: ${LIBA} ${OBJS} ${HEADER} 
 		${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${LIBA} 
 
-norm: ${SRCS} ${LIBFT_C} ${HEADER} ${HEADER_LIBA}
-		norminette ${SRCS} ${LIBFT_C} ${HEADER} ${HEADER_LIBA}
+
+${NAME_CH}: ${LIBA} ${OBJS_CH} ${HEADER} ${HEADER_CH} 
+			${CC} ${CFLAGS} -o ${NAME_CH} ${OBJS_CH} ${LIBA} 
+
+bonus: ${NAME_CH}
+
+norm: ${SRCS} ${LIBFT_C} ${SRCS_СH} ${HEADER} ${HEADER_LIBA} ${HEADER_CH}
+		norminette ${SRCS} ${LIBFT_C} ${HEADER} ${HEADER_LIBA} ${SRCS_СH} ${HEADER_CH}
 
 clean:
-		${RM} ${OBJS}
+		${RM} ${OBJS} ${OBJS_CH}
 
 fclean:	clean
-		${RM} ${NAME} a.out ${LIBA}
+		${RM} ${NAME} ${NAME_CH} ${LIBA}
 
 re:		fclean all
 
