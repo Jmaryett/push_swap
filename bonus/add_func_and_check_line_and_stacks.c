@@ -1,40 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_line_and_stacks.c                            :+:      :+:    :+:   */
+/*   add_func_and_check_line_and_stacks.c               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chudapak <chudapak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 18:18:49 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/08 12:04:43 by chudapak         ###   ########.fr       */
+/*   Updated: 2021/10/08 17:26:46 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-/* static void	check_if_a_is_sorted(t_stack **a)
-{
-	while (*a)								//у тебя сега из-за этого условия была
-	{										//можешь удалить эту функцию
-		if ((*a)->index < (*a)->next->index)
-			*a = (*a)->next;
-		else
-		{
-			free_memory_lst(*a);
-			write (1, "KO\n", 3);
-			exit (1);
-		}
-	}
-	write (1, "OK\n", 3);
-	exit (1);
-} */
-
 void	check_stacks(t_stack **a, t_stack **b)
 {
 	if (!b || !*b)
 	{
-		//check_if_a_is_sorted(a); - я написал функцию is_sorted теперь проверяй ей
-		//также отдельная функция write_msg_free_memory_and_exit для выхода из программы и вывода сообщения, чтобы код не дублировать
 		if (is_sorted(*a) == 0)
 			write_msg_free_memory_and_exit("OK\n", *a, 0);
 		else
@@ -66,5 +47,27 @@ void	add_check_commands(char *line, t_stack **a, t_stack **b)
 		reverse_rotate (b);
 	}
 	else
-		error_case_for_push("Error\nWrong instruction.\n");
+		error_case_for_push("Error\n");
+}
+
+void	write_msg_free_memory_and_exit(char *msg, t_stack *mem, int exit_code)
+{
+	free_memory_lst(mem);
+	ft_putstr_fd(msg, 1);
+	exit (exit_code);
+}
+
+int	is_sorted(t_stack *stack)
+{
+	t_stack	*tmp;
+
+	tmp = stack->next;
+	while (tmp)
+	{
+		if (stack->number >= tmp->number)
+			return (-1);
+		stack = stack->next;
+		tmp = tmp->next;
+	}
+	return (0);
 }

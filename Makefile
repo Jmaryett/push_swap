@@ -42,7 +42,8 @@ SRCS	= push_swap.c \
 		error_case.c
 		
 SRCS_СH	= ./bonus/checker.c \
-		./bonus/check_line_and_stacks.c \
+		./bonus/add_func_and_check_line_and_stacks.c \
+		./bonus/validation.c \
 		0_parsing_and_filling_args.c \
 		1_validate_and_fill.c \
 		2_func_to_fill_stack_a.c \
@@ -53,8 +54,7 @@ SRCS_СH	= ./bonus/checker.c \
 		./commands/swap.c \
 		error_case.c \
 		./gnl/get_next_line.c \
-		./gnl/get_next_line_utils.c \
-		./bonus/validation.c
+		./gnl/get_next_line_utils.c
 
 OBJS	= ${SRCS:.c=.o}
 

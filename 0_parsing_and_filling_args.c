@@ -6,7 +6,7 @@
 /*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 17:55:35 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/07 20:37:54 by jmaryett         ###   ########.fr       */
+/*   Updated: 2021/10/08 17:27:50 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	parse_and_validate_argument(t_stack **data_stack, char *argument)
 		|| !(add_arguments_to_stack(data_stack, splited_argumets)))
 	{
 		free_array_of_strings(splited_argumets);
-		error_case_for_push("Error\nWrong args or can't alloc memory for elem of stack\n");
+		error_case_for_push("Error\n");
 	}
 	free_array_of_strings(splited_argumets);
 	return ;
@@ -62,7 +62,7 @@ static int	check_duplicats_and_is_sorted(t_stack *data_stack,
 		{
 			if (tmp->number == tmp_next->number)
 			{
-				write(1, "Error\nStack has duplicates\n", 28);
+				write(1, "Error\n", 6);
 				return (-1);
 			}
 			if (tmp->number >= tmp_next->number)

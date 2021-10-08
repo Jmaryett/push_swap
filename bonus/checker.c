@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chudapak <chudapak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmaryett <jmaryett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:48:41 by jmaryett          #+#    #+#             */
-/*   Updated: 2021/10/08 12:08:31 by chudapak         ###   ########.fr       */
+/*   Updated: 2021/10/08 17:42:06 by jmaryett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	check_commands(char *line, t_stack **a, t_stack **b)
 static void	check_line(char *line, t_stack **a, t_stack **b)
 {
 	if (ft_strlen(line) > 3 || ft_strlen(line) <= 1)
-		error_case_for_push("Error\nWrong instruction.\n");
+		error_case_for_push("Error\n");
 	check_commands(line, a, b);
 }
 
@@ -62,39 +62,9 @@ static void	starting_to_check(t_stack **stack_a)
 	stack_b = NULL;
 	indexation(stack_a);
 	tmp_a = *stack_a;
-	while (tmp_a)
-	{
-		printf("number is = %d, index = %d\n", tmp_a->number, tmp_a->index);
-		tmp_a = tmp_a->next;
-	}
 	reading_commands(stack_a, &stack_b);
 }
 
-int	is_sorted(t_stack *stack)
-{
-	t_stack	*tmp;
-
-	tmp = stack->next;
-	while (tmp)
-	{
-		if (stack->number >= tmp->number)
-			return (-1);
-		stack = stack->next;
-		tmp = tmp->next;
-	}
-	return (0);
-}
-
-void	write_msg_free_memory_and_exit(char *msg, t_stack *mem, int exit_code)
-{
-	free_memory_lst(mem);
-	ft_putstr_fd(msg, 1);
-	exit (exit_code);
-}
-
-// ДОДЕЛАТЬ: норму и потести еще
-// Предупреждение - у тебя пуш свап на 4 работает тип а там реально написанно - БОНУСЫ ПРОВЕРЯТЬ ЕСЛИ ВСЕ **ИДЕАЛЬНО** РАБОТАЕТ
-// Попроси леху выставить слоты и надейся что попадешь на челов с новой волны)) Если тебя 2 без бонусов поставят, а один с бонусами у тебя всеравно будет 3 лвл)
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
@@ -107,10 +77,9 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Error\n", 2);
 		return (0);
 	}
-	//не пихай ебаные exit везде пиздец какой-то
-	if (is_sorted(stack_a) == 0) 					//проверяем отсортирован ли список и если да то пишем ОК и выходим
+	if (is_sorted(stack_a) == 0)
 		write_msg_free_memory_and_exit("OK\n", stack_a, 0);
 	starting_to_check(&stack_a);
 	free_memory_lst(stack_a);
-	return (0);
+	exit (1);
 }

@@ -6,13 +6,13 @@
 //если при валидации или перемещении возникла 
 //ошибка - чистим массив и возвр ошибку
 
-static void	parse_and_validate_argument(t_stack **data_stack, char *argument)
+static void	parse_and_validate_argument(t_stack **stack_a, char *argument)
 {
 	char	**splited_argumets;
 
 	splited_argumets = ft_split(argument, ' ');
 	if (!(validate_arguments(splited_argumets))
-		|| !(add_arguments_to_stack(data_stack, splited_argumets)))
+		|| !(add_arguments_to_stack(stack_a, splited_argumets)))
 	{
 		free_array_of_strings(splited_argumets);
 		error_case_for_push("Error\n");
@@ -23,25 +23,24 @@ static void	parse_and_validate_argument(t_stack **data_stack, char *argument)
 
 static t_stack	*fill_with_numbers(int number_arguments, char **argument)
 {
-	t_stack	*data_stack;
+	t_stack	*stack_a;
 	int		i;
 
 	i = -1;
-	data_stack = NULL;
+	stack_a = NULL;
 	while (++i < number_arguments)
-		parse_and_validate_argument(&data_stack, argument[i]);
-	return (data_stack);
+		parse_and_validate_argument(&stack_a, argument[i]);
+	return (stack_a);
 }
 
-//проверяем, отсортирован ли стек и есть в нем дупликаты
-//1 это отсортирован, 0-нет; по умолчанию задаем значение 1
+//проверяем, есть ли дубликаты
 
-static int	check_duplicats(t_stack *data_stack)
+static int	check_duplicats(t_stack *stack_a)
 {
 	t_stack	*tmp;
 	t_stack	*tmp_next;
 
-	tmp = data_stack;
+	tmp = stack_a;
 	while (tmp)
 	{
 		tmp_next = tmp->next;
@@ -59,33 +58,34 @@ static int	check_duplicats(t_stack *data_stack)
 	return (0);
 }
 
-//проверяем размер стека и дупликаты
-static int	validate_stack(t_stack *data_stack)
-{
-	int	has_duplicant;
+//проверяем размер стека и дубликаты
 
-	has_duplicant = 1;
-	if (lstsize(data_stack) < 2)
+static int	validate_stack(t_stack *stack_a)
+{
+	int	has_duplicat;
+
+	has_duplicat = 1;
+	if (lstsize(stack_a) < 2)
 	{
 		ft_putstr_fd("Error\n", 2);
 		exit(1);
 	}
-	has_duplicant = check_duplicats(data_stack);
-	if (has_duplicant == -1)
+	has_duplicat = check_duplicats(stack_a);
+	if (has_duplicat == -1)
 		exit (1);
 	return (1);
 }
 
-//в ф-ю заполнения стека подаем сразу без арг без имени проги и,
+//в ф-ю заполнения стека подаем сразу без арг, без имени проги и,
 //соответственно, с меньшим количеством ас
 
 t_stack	*parse_validate_input(int ac, char **av)
 {
-	t_stack	*data_stack;
+	t_stack	*stack_a;
 
 	if (ac < 2)
 		return (NULL);
-	data_stack = fill_with_numbers(--ac, ++av);
-	validate_stack(data_stack);
-	return (data_stack);
+	stack_a = fill_with_numbers(--ac, ++av);
+	validate_stack(stack_a);
+	return (stack_a);
 }
