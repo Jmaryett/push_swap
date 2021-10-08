@@ -2,3 +2,5 @@
 *.o
 a.out
 not_needed_func
+/push_swap_tester/
+tester.sh
